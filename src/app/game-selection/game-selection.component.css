@@ -1,7 +1,6 @@
 @layer components {
   .cmp-game-selection {
     display: grid;
-    gap: 1rem;
     place-items: center;
     height: 100dvh;
   }
@@ -11,6 +10,7 @@
     text-decoration: none;
     border: 0.125rem solid currentColor;
     padding: 0.5em 1em;
+    text-align: center;
   }
 
   .cmp-game-selection a:hover,
