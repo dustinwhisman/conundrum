@@ -7,9 +7,21 @@ import { SettingsComponent } from './settings/settings.component';
 
 const routes: Routes = [
   { path: '', component: GameSelectionComponent },
-  { path: 'letters-game', component: LettersGameComponent },
-  { path: 'numbers-game', component: NumbersGameComponent },
-  { path: 'settings', component: SettingsComponent },
+  {
+    path: 'letters-game',
+    component: LettersGameComponent,
+    title: 'Letters Game | Conundrum',
+  },
+  {
+    path: 'numbers-game',
+    component: NumbersGameComponent,
+    title: 'Numbers Game | Conundrum',
+  },
+  {
+    path: 'settings',
+    component: SettingsComponent,
+    title: 'Settings | Conundrum',
+  },
 ];
 
 @NgModule({
