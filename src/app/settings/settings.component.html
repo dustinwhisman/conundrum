@@ -1,1 +1,71 @@
-<p>settings works!</p>
+<h1>Settings</h1>
+
+<form
+  [formGroup]="settingsForm"
+  (ngSubmit)="onSubmit()"
+  class="cmp-settings-form"
+>
+  <fieldset>
+    <legend>Timer Duration</legend>
+    <div>
+      <input
+        id="timerDuration30"
+        type="radio"
+        formControlName="timerDuration"
+        name="timerDuration"
+        value="30"
+      />
+      <label for="timerDuration30"> 30 seconds </label>
+    </div>
+    <div>
+      <input
+        id="timerDuration60"
+        type="radio"
+        formControlName="timerDuration"
+        name="timerDuration"
+        value="60"
+      />
+      <label for="timerDuration60"> 60 seconds </label>
+    </div>
+    <div>
+      <input
+        id="timerDurationOff"
+        type="radio"
+        formControlName="timerDuration"
+        name="timerDuration"
+        value="off"
+      />
+      <label for="timerDurationOff"> No timer </label>
+    </div>
+  </fieldset>
+  <fieldset>
+    <legend>Letter Positioning</legend>
+    <div>
+      <input
+        id="letterPositioningLinear"
+        type="radio"
+        formControlName="letterPositioning"
+        name="letterPositioning"
+        value="linear"
+      />
+      <label for="letterPositioningLinear">
+        Arrange letters in a straight line
+      </label>
+    </div>
+    <div>
+      <input
+        id="letterPositioningRadial"
+        type="radio"
+        formControlName="letterPositioning"
+        name="letterPositioning"
+        value="radial"
+      />
+      <label for="letterPositioningRadial"> Arrange letters in a circle </label>
+    </div>
+  </fieldset>
+  <div>
+    <button type="submit">Save Settings</button>
+  </div>
+</form>
+
+<a href="/">Back</a>
