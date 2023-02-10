@@ -22,6 +22,12 @@ export type Consonant =
   | 'y'
   | 'z';
 
+export type GameState =
+  | 'game-setup'
+  | 'game-starting-soon'
+  | 'game-in-progress'
+  | 'game-ended';
+
 export const vowels: Vowel[] = [
   ...Array(15).fill('a'),
   ...Array(21).fill('e'),
