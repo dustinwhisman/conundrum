@@ -1,4 +1,28 @@
-export const vowels = [
+export type Vowel = 'a' | 'e' | 'i' | 'o' | 'u';
+export type Consonant =
+  | 'b'
+  | 'c'
+  | 'd'
+  | 'f'
+  | 'g'
+  | 'h'
+  | 'j'
+  | 'k'
+  | 'l'
+  | 'm'
+  | 'n'
+  | 'p'
+  | 'q'
+  | 'r'
+  | 's'
+  | 't'
+  | 'v'
+  | 'w'
+  | 'x'
+  | 'y'
+  | 'z';
+
+export const vowels: Vowel[] = [
   ...Array(15).fill('a'),
   ...Array(21).fill('e'),
   ...Array(13).fill('i'),
@@ -6,14 +30,13 @@ export const vowels = [
   ...Array(5).fill('u'),
 ];
 
-export const consonants = [
+export const consonants: Consonant[] = [
   ...Array(2).fill('b'),
   ...Array(3).fill('c'),
   ...Array(6).fill('d'),
-  ...Array(2).fill('e'),
-  ...Array(3).fill('f'),
-  ...Array(3).fill('g'),
-  ...Array(1).fill('h'),
+  ...Array(2).fill('f'),
+  ...Array(4).fill('g'),
+  ...Array(2).fill('h'),
   ...Array(1).fill('j'),
   ...Array(1).fill('k'),
   ...Array(5).fill('l'),
