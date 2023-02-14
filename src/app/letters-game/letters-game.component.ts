@@ -15,6 +15,7 @@ type Letter = {
 export class LettersGameComponent {
   state: GameState = 'game-setup';
   letters: Array<Letter> = [];
+  word: Array<Consonant | Vowel> = [];
   vowelCount = 0;
   consonantCount = 0;
 
@@ -74,5 +75,29 @@ export class LettersGameComponent {
         this.state = 'game-in-progress';
       }, 3000);
     }
+  }
+
+  addLetter(letter: Letter) {
+    letter.isInUse = true;
+    this.word.push(letter.letter);
+    console.log(this.word.join(''));
+  }
+
+  removeLetter(letter: Consonant | Vowel, index: number) {
+    this.word.splice(index, 1);
+    const matchingLetter = this.letters.find(
+      (l) => l.letter === letter && l.isInUse
+    );
+    if (matchingLetter != null) {
+      matchingLetter.isInUse = false;
+    }
+    console.log(this.word.join(''));
+  }
+
+  clearWord() {
+    this.letters.forEach((letter) => {
+      letter.isInUse = false;
+    });
+    this.word = [];
   }
 }

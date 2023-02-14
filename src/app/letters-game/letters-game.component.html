@@ -4,12 +4,24 @@
   Choose 9 letters with a minimum of 3 vowels and 3 consonants.
 </p>
 
+<ul class="cmp-selected-letters" *ngIf="state !== 'game-setup'">
+  <li *ngFor="let letter of word; let i = index">
+    <button type="button" (click)="removeLetter(letter, i)">
+      {{ letter }}
+    </button>
+  </li>
+</ul>
+
 <ul
   class="cmp-selected-letters"
   [ngClass]="state !== 'game-setup' ? 'cmp-selected-letters--justify' : ''"
 >
   <li *ngFor="let letter of letters">
-    <button type="button" [disabled]="letter.isInUse">
+    <button
+      type="button"
+      [disabled]="letter.isInUse"
+      (click)="addLetter(letter)"
+    >
       {{ letter.letter }}
     </button>
   </li>
@@ -28,7 +40,11 @@
   </button>
 </div>
 <div class="cmp-cv-buttons" *ngIf="state !== 'game-setup'">
-  <button type="button" [disabled]="state !== 'game-in-progress'">
+  <button
+    type="button"
+    [disabled]="state !== 'game-in-progress'"
+    (click)="clearWord()"
+  >
     Clear word
   </button>
 </div>
