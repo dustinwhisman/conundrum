@@ -1,23 +1,34 @@
 <h1>Letters Game</h1>
 
-<div class="cmp-letter-selection cmp-stack" *ngIf="state === 'game-setup'">
-  <p>Choose 9 letters with a minimum of 3 vowels and 3 consonants.</p>
-  <div class="cmp-cv-buttons">
-    <button type="button" (click)="chooseVowel()" [disabled]="vowelCount > 5">
-      Vowel
-    </button>
-    <button
-      type="button"
-      (click)="chooseConsonant()"
-      [disabled]="consonantCount > 5"
-    >
-      Consonant
-    </button>
-  </div>
-</div>
+<p *ngIf="state === 'game-setup'">
+  Choose 9 letters with a minimum of 3 vowels and 3 consonants.
+</p>
 
-<ul class="cmp-selected-letters">
+<ul
+  class="cmp-selected-letters"
+  [ngClass]="state !== 'game-setup' ? 'cmp-selected-letters--justify' : ''"
+>
   <li *ngFor="let letter of letters">
-    {{ letter }}
+    <button type="button">
+      {{ letter }}
+    </button>
   </li>
 </ul>
+
+<div class="cmp-cv-buttons" *ngIf="state === 'game-setup'">
+  <button type="button" (click)="chooseVowel()" [disabled]="vowelCount > 5">
+    Vowel
+  </button>
+  <button
+    type="button"
+    (click)="chooseConsonant()"
+    [disabled]="consonantCount > 5"
+  >
+    Consonant
+  </button>
+</div>
+<div class="cmp-cv-buttons" *ngIf="state !== 'game-setup'">
+  <button type="button" [disabled]="state !== 'game-in-progress'">
+    Clear word
+  </button>
+</div>

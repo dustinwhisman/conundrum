@@ -1,4 +1,45 @@
+:host {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-s0);
+  padding-block: var(--size-s2);
+}
+
+h1,
+p {
+  text-align: center;
+}
+
 .cmp-cv-buttons {
   display: flex;
+  flex-wrap: wrap;
   gap: var(--size-s0);
+  justify-content: center;
+}
+
+.cmp-cv-buttons__placeholder {
+  height: var(--size-s5);
+}
+
+.cmp-cv-buttons button {
+  font-size: var(--size-s1);
+}
+
+.cmp-selected-letters {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: var(--size-s-1);
+  flex-wrap: wrap;
+  margin-top: auto;
+}
+
+.cmp-selected-letters--justify {
+  justify-content: center;
+}
+
+.cmp-selected-letters button {
+  text-transform: uppercase;
 }

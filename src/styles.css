@@ -65,6 +65,12 @@
   :where(h1, h2, h3, h4, h5, h6, p, ul, ol, dl) {
     line-height: calc(1em + 0.5rem);
   }
+
+  app-root,
+  main {
+    display: block;
+    height: 100%;
+  }
 }
 
 @layer elements {
@@ -242,7 +248,8 @@
 
   button {
     cursor: pointer;
-    font-size: var(--size-s2);
+    font-size: var(--size-s0);
+    font-family: var(--mono);
     text-decoration: none;
     border: 0.125rem solid currentColor;
     padding: 0.5em 1em;
@@ -250,18 +257,18 @@
     background-color: transparent;
   }
 
-  button:hover,
-  button:focus {
+  button:not([disabled]):hover,
+  button:not([disabled]):focus {
     background-color: var(--ink);
     color: var(--paper);
   }
 
-  button:focus {
+  button:not([disabled]):focus {
     outline: 0.125em solid var(--ink);
     outline-offset: 0.25em;
   }
 
-  button:focus:not(:focus-visible) {
+  button:not([disabled]):focus:not(:focus-visible) {
     outline-color: transparent;
   }
 }
@@ -270,6 +277,7 @@
   .cmp-container {
     width: min(100vw - 2rem, 50rem);
     margin-inline: auto;
+    height: 100%;
   }
 
   .cmp-stack {
