@@ -7,6 +7,10 @@
   <p>Get ready. The game starts in:</p>
   <p class="cmp-countdown">{{ timeRemaining }}</p>
 </div>
+<div *ngIf="state === 'game-in-progress'">
+  <p>Spell the longest word you can!</p>
+  <p class="cmp-countdown">{{ timeRemaining }}</p>
+</div>
 
 <ul class="cmp-selected-letters" *ngIf="state !== 'game-setup'">
   <li *ngFor="let letter of word; let i = index">

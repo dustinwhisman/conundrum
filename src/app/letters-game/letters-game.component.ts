@@ -92,6 +92,7 @@ export class LettersGameComponent {
         this.timeRemaining = 0;
         if (this.state === 'game-starting-soon') {
           this.state = 'game-in-progress';
+          this.startCountdown(30);
           return;
         }
 
