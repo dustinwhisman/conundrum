@@ -43,3 +43,34 @@ p {
 .cmp-selected-letters button {
   text-transform: uppercase;
 }
+
+.cmp-countdown {
+  font-family: var(--mono);
+  font-size: var(--size-s5);
+  text-align: center;
+}
+
+.cmp-link-as-button {
+  font-size: var(--size-s1);
+  font-family: var(--mono);
+  text-decoration: none;
+  border: 0.125rem solid currentColor;
+  padding: 0.5em 1em;
+  text-align: center;
+  background-color: transparent;
+}
+
+.cmp-link-as-button:hover,
+.cmp-link-as-button:focus {
+  background-color: var(--ink);
+  color: var(--paper);
+}
+
+.cmp-link-as-button:focus {
+  outline: 0.125em solid var(--ink);
+  outline-offset: 0.25em;
+}
+
+.cmp-link-as-button:focus:not(:focus-visible) {
+  outline-color: transparent;
+}
