@@ -3,6 +3,9 @@
 <p *ngIf="state === 'game-setup'">
   Choose 9 letters with a minimum of 3 vowels and 3 consonants.
 </p>
+<p *ngIf="state === 'game-starting-soon'">
+  Get ready. The game starts in 3, 2, 1, now!
+</p>
 
 <ul class="cmp-selected-letters" *ngIf="state !== 'game-setup'">
   <li *ngFor="let letter of word; let i = index">
