@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import type { Consonant, Vowel, GameState } from '../letters';
 import { LettersService } from '../letters.service';
+import { SettingsService } from '../settings.service';
 
 type Letter = {
   isInUse: boolean;
@@ -19,8 +20,19 @@ export class LettersGameComponent {
   vowelCount = 0;
   consonantCount = 0;
   timeRemaining = 3;
+  roundDuration = 30;
 
-  constructor(private lettersService: LettersService) {}
+  constructor(
+    private lettersService: LettersService,
+    private settingsService: SettingsService
+  ) {
+    const { timerDuration } = this.settingsService.getSettings();
+    if (timerDuration !== 'off') {
+      this.roundDuration = Number.parseInt(timerDuration, 10);
+    } else {
+      this.roundDuration = 0;
+    }
+  }
 
   chooseVowel() {
     if (this.state !== 'game-setup' || this.vowelCount > 5) {
@@ -92,7 +104,10 @@ export class LettersGameComponent {
         this.timeRemaining = 0;
         if (this.state === 'game-starting-soon') {
           this.state = 'game-in-progress';
-          this.startCountdown(30);
+
+          if (this.roundDuration > 0) {
+            this.startCountdown(this.roundDuration);
+          }
           return;
         }
 

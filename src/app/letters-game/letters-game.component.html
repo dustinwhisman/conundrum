@@ -9,7 +9,7 @@
 </div>
 <div *ngIf="state === 'game-in-progress'">
   <p>Spell the longest word you can!</p>
-  <p class="cmp-countdown">{{ timeRemaining }}</p>
+  <p class="cmp-countdown" *ngIf="roundDuration > 0">{{ timeRemaining }}</p>
 </div>
 
 <ul class="cmp-selected-letters" *ngIf="state !== 'game-setup'">
@@ -58,6 +58,12 @@
   >
     Clear word
   </button>
+  <button type="button" (click)="resetGame()" *ngIf="roundDuration === 0">
+    New Game
+  </button>
+  <a href="/" class="cmp-link-as-button" *ngIf="roundDuration === 0">
+    Main Menu
+  </a>
 </div>
 <div class="cmp-cv-buttons" *ngIf="state === 'game-ended'">
   <button type="button" (click)="resetGame()">New Game</button>
