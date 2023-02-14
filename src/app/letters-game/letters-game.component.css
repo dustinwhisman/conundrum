@@ -43,3 +43,9 @@ p {
 .cmp-selected-letters button {
   text-transform: uppercase;
 }
+
+.cmp-countdown {
+  font-family: var(--mono);
+  font-size: var(--size-s5);
+  text-align: center;
+}
