@@ -239,6 +239,31 @@
     padding-inline-start: var(--size-s-1);
     border-inline-start: 0.125em solid var(--ink);
   }
+
+  button {
+    cursor: pointer;
+    font-size: var(--size-s2);
+    text-decoration: none;
+    border: 0.125rem solid currentColor;
+    padding: 0.5em 1em;
+    text-align: center;
+    background-color: transparent;
+  }
+
+  button:hover,
+  button:focus {
+    background-color: var(--ink);
+    color: var(--paper);
+  }
+
+  button:focus {
+    outline: 0.125em solid var(--ink);
+    outline-offset: 0.25em;
+  }
+
+  button:focus:not(:focus-visible) {
+    outline-color: transparent;
+  }
 }
 
 @layer components {

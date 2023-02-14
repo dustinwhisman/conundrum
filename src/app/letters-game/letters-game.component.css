@@ -1,0 +1,4 @@
+.cmp-cv-buttons {
+  display: flex;
+  gap: var(--size-s0);
+}
