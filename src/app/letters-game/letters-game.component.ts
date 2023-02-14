@@ -2,6 +2,11 @@ import { Component } from '@angular/core';
 import type { Consonant, Vowel, GameState } from '../letters';
 import { LettersService } from '../letters.service';
 
+type Letter = {
+  isInUse: boolean;
+  letter: Consonant | Vowel;
+};
+
 @Component({
   selector: 'app-letters-game',
   templateUrl: './letters-game.component.html',
@@ -9,7 +14,8 @@ import { LettersService } from '../letters.service';
 })
 export class LettersGameComponent {
   state: GameState = 'game-setup';
-  letters: Array<Consonant | Vowel> = [];
+  letters: Array<Letter> = [];
+  word: Array<Consonant | Vowel> = [];
   vowelCount = 0;
   consonantCount = 0;
 
@@ -26,7 +32,10 @@ export class LettersGameComponent {
       return;
     }
 
-    this.letters.push(this.lettersService.getVowel());
+    this.letters.push({
+      isInUse: false,
+      letter: this.lettersService.getVowel(),
+    });
     this.vowelCount += 1;
     console.log(this.letters);
 
@@ -51,7 +60,10 @@ export class LettersGameComponent {
       return;
     }
 
-    this.letters.push(this.lettersService.getConsonant());
+    this.letters.push({
+      isInUse: false,
+      letter: this.lettersService.getConsonant(),
+    });
     this.consonantCount += 1;
     console.log(this.letters);
 
@@ -63,5 +75,29 @@ export class LettersGameComponent {
         this.state = 'game-in-progress';
       }, 3000);
     }
+  }
+
+  addLetter(letter: Letter) {
+    letter.isInUse = true;
+    this.word.push(letter.letter);
+    console.log(this.word.join(''));
+  }
+
+  removeLetter(letter: Consonant | Vowel, index: number) {
+    this.word.splice(index, 1);
+    const matchingLetter = this.letters.find(
+      (l) => l.letter === letter && l.isInUse
+    );
+    if (matchingLetter != null) {
+      matchingLetter.isInUse = false;
+    }
+    console.log(this.word.join(''));
+  }
+
+  clearWord() {
+    this.letters.forEach((letter) => {
+      letter.isInUse = false;
+    });
+    this.word = [];
   }
 }
