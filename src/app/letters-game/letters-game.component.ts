@@ -2,6 +2,11 @@ import { Component } from '@angular/core';
 import type { Consonant, Vowel, GameState } from '../letters';
 import { LettersService } from '../letters.service';
 
+type Letter = {
+  isInUse: boolean;
+  letter: Consonant | Vowel;
+};
+
 @Component({
   selector: 'app-letters-game',
   templateUrl: './letters-game.component.html',
@@ -9,7 +14,7 @@ import { LettersService } from '../letters.service';
 })
 export class LettersGameComponent {
   state: GameState = 'game-setup';
-  letters: Array<Consonant | Vowel> = [];
+  letters: Array<Letter> = [];
   vowelCount = 0;
   consonantCount = 0;
 
@@ -26,7 +31,10 @@ export class LettersGameComponent {
       return;
     }
 
-    this.letters.push(this.lettersService.getVowel());
+    this.letters.push({
+      isInUse: false,
+      letter: this.lettersService.getVowel(),
+    });
     this.vowelCount += 1;
     console.log(this.letters);
 
@@ -51,7 +59,10 @@ export class LettersGameComponent {
       return;
     }
 
-    this.letters.push(this.lettersService.getConsonant());
+    this.letters.push({
+      isInUse: false,
+      letter: this.lettersService.getConsonant(),
+    });
     this.consonantCount += 1;
     console.log(this.letters);
 

@@ -9,8 +9,8 @@
   [ngClass]="state !== 'game-setup' ? 'cmp-selected-letters--justify' : ''"
 >
   <li *ngFor="let letter of letters">
-    <button type="button">
-      {{ letter }}
+    <button type="button" [disabled]="letter.isInUse">
+      {{ letter.letter }}
     </button>
   </li>
 </ul>
