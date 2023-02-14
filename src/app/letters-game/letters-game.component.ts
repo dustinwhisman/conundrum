@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { environment } from 'src/environments/environment';
 import type { Consonant, Vowel, GameState } from '../letters';
 import { LettersService } from '../letters.service';
 import { SettingsService } from '../settings.service';
@@ -21,6 +22,7 @@ export class LettersGameComponent {
   consonantCount = 0;
   timeRemaining = 3;
   roundDuration = 30;
+  longestWord = '';
 
   constructor(
     private lettersService: LettersService,
@@ -46,7 +48,6 @@ export class LettersGameComponent {
     this.vowelCount += 1;
 
     if (this.letters.length >= 9) {
-      console.log('Get ready. The game starts in 3, 2, 1, now!');
       this.state = 'game-starting-soon';
       this.startCountdown(3);
     }
@@ -72,7 +73,7 @@ export class LettersGameComponent {
   addLetter(letter: Letter) {
     letter.isInUse = true;
     this.word.push(letter.letter);
-    console.log(this.word.join(''));
+    this.checkWordValidity();
   }
 
   removeLetter(letter: Consonant | Vowel, index: number) {
@@ -83,7 +84,7 @@ export class LettersGameComponent {
     if (matchingLetter != null) {
       matchingLetter.isInUse = false;
     }
-    console.log(this.word.join(''));
+    this.checkWordValidity();
   }
 
   clearWord() {
@@ -131,5 +132,24 @@ export class LettersGameComponent {
     this.vowelCount = 0;
     this.consonantCount = 0;
     this.timeRemaining = 3;
+    this.longestWord = '';
+  }
+
+  async checkWordValidity() {
+    if (this.word.length < this.longestWord.length) {
+      return;
+    }
+
+    const request = await fetch(
+      `https://www.dictionaryapi.com/api/v3/references/collegiate/json/${this.word.join(
+        ''
+      )}?key=${environment.dictionaryApiKey}`
+    );
+
+    const response = await request.json();
+
+    if (response.some((obj: any) => typeof obj === 'object')) {
+      this.longestWord = this.word.join('');
+    }
   }
 }
