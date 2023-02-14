@@ -18,17 +18,12 @@ export class LettersGameComponent {
   word: Array<Consonant | Vowel> = [];
   vowelCount = 0;
   consonantCount = 0;
+  timeRemaining = 3;
 
   constructor(private lettersService: LettersService) {}
 
   chooseVowel() {
-    if (this.state !== 'game-setup') {
-      console.warn('This is not the time for that.');
-      return;
-    }
-
-    if (this.vowelCount > 5) {
-      console.warn('You have selected the maximum number of vowels.');
+    if (this.state !== 'game-setup' || this.vowelCount > 5) {
       return;
     }
 
@@ -37,26 +32,16 @@ export class LettersGameComponent {
       letter: this.lettersService.getVowel(),
     });
     this.vowelCount += 1;
-    console.log(this.letters);
 
     if (this.letters.length >= 9) {
       console.log('Get ready. The game starts in 3, 2, 1, now!');
       this.state = 'game-starting-soon';
-      setTimeout(() => {
-        console.log('Let the game begin!');
-        this.state = 'game-in-progress';
-      }, 3000);
+      this.startCountdown(3);
     }
   }
 
   chooseConsonant() {
-    if (this.state !== 'game-setup') {
-      console.warn('This is not the time for that.');
-      return;
-    }
-
-    if (this.consonantCount > 5) {
-      console.warn('You have selected the maximum number of vowels.');
+    if (this.state !== 'game-setup' || this.consonantCount > 5) {
       return;
     }
 
@@ -65,15 +50,10 @@ export class LettersGameComponent {
       letter: this.lettersService.getConsonant(),
     });
     this.consonantCount += 1;
-    console.log(this.letters);
 
     if (this.letters.length >= 9) {
-      console.log('Get ready. The game starts in 3, 2, 1, now!');
       this.state = 'game-starting-soon';
-      setTimeout(() => {
-        console.log('Let the game begin!');
-        this.state = 'game-in-progress';
-      }, 3000);
+      this.startCountdown(3);
     }
   }
 
@@ -99,5 +79,32 @@ export class LettersGameComponent {
       letter.isInUse = false;
     });
     this.word = [];
+  }
+
+  startCountdown(durationInSeconds: number) {
+    const endTime = Date.now() + durationInSeconds * 1000;
+
+    const checkTime = () => {
+      const now = Date.now();
+      const remaining = endTime - now;
+
+      if (remaining <= 0) {
+        this.timeRemaining = 0;
+        if (this.state === 'game-starting-soon') {
+          this.state = 'game-in-progress';
+          return;
+        }
+
+        if (this.state === 'game-in-progress') {
+          this.state = 'game-ended';
+          return;
+        }
+      } else {
+        this.timeRemaining = Math.ceil(remaining / 1000);
+        requestAnimationFrame(checkTime);
+      }
+    };
+
+    checkTime();
   }
 }
