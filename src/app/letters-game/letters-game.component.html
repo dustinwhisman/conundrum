@@ -19,7 +19,7 @@
   <li *ngFor="let letter of letters">
     <button
       type="button"
-      [disabled]="letter.isInUse"
+      [disabled]="letter.isInUse || state !== 'game-in-progress'"
       (click)="addLetter(letter)"
     >
       {{ letter.letter }}
