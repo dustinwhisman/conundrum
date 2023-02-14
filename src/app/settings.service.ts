@@ -26,7 +26,6 @@ export class SettingsService {
   setSettings({ timerDuration, letterPositioning }: Settings) {
     this.settings.timerDuration = timerDuration;
     this.settings.letterPositioning = letterPositioning;
-    console.log(this.settings);
     localStorage.setItem('settings', JSON.stringify(this.settings));
   }
 }
