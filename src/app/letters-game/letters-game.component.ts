@@ -108,4 +108,13 @@ export class LettersGameComponent {
 
     checkTime();
   }
+
+  resetGame() {
+    this.state = 'game-setup';
+    this.letters = [];
+    this.word = [];
+    this.vowelCount = 0;
+    this.consonantCount = 0;
+    this.timeRemaining = 3;
+  }
 }

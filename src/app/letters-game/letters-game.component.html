@@ -47,7 +47,10 @@
     Consonant
   </button>
 </div>
-<div class="cmp-cv-buttons" *ngIf="state !== 'game-setup'">
+<div
+  class="cmp-cv-buttons"
+  *ngIf="state !== 'game-setup' && state !== 'game-ended'"
+>
   <button
     type="button"
     [disabled]="state !== 'game-in-progress'"
@@ -55,4 +58,8 @@
   >
     Clear word
   </button>
+</div>
+<div class="cmp-cv-buttons" *ngIf="state === 'game-ended'">
+  <button type="button" (click)="resetGame()">New Game</button>
+  <a href="/" class="cmp-link-as-button"> Main Menu </a>
 </div>
