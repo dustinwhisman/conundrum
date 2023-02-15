@@ -1,0 +1,8 @@
+:host {
+  height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr 1fr 1fr auto auto auto;
+  gap: var(--size-s5);
+  padding-block: var(--size-s2);
+  place-items: center;
+}

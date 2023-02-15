@@ -23,4 +23,9 @@ export class LettersService {
     this.consonants.splice(index, 1);
     return letter;
   }
+
+  restockLetters() {
+    this.consonants = [...consonants];
+    this.vowels = [...vowels];
+  }
 }
