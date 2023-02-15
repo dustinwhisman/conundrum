@@ -29,7 +29,6 @@
 
 .cmp-letters {
   grid-area: letters;
-  place-self: center;
 }
 
 .cmp-controls {
@@ -58,10 +57,66 @@
   display: flex;
   gap: var(--size-s-1);
   flex-wrap: wrap;
+  justify-content: center;
 }
 
-.cmp-selected-letters--justify {
-  justify-content: center;
+.cmp-selected-letters--radial {
+  display: block;
+  position: relative;
+  width: 18rem;
+  height: 18rem;
+  margin-inline: auto;
+}
+
+.cmp-selected-letters--radial li {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.cmp-selected-letters--radial li:nth-child(n) {
+  top: 0;
+}
+
+.cmp-selected-letters--radial li:nth-child(2n) {
+  top: 11.7%;
+  left: 82.1%;
+}
+
+.cmp-selected-letters--radial li:nth-child(3n) {
+  top: 41.3%;
+  left: 99.2%;
+}
+
+.cmp-selected-letters--radial li:nth-child(4n) {
+  top: 75%;
+  left: 93.3%;
+}
+
+.cmp-selected-letters--radial li:nth-child(5n) {
+  top: 97%;
+  left: 67.1%;
+}
+
+.cmp-selected-letters--radial li:nth-child(6n) {
+  top: 97%;
+  left: 32.9%;
+}
+
+.cmp-selected-letters--radial li:nth-child(7n) {
+  top: 75%;
+  left: 6.7%;
+}
+
+.cmp-selected-letters--radial li:nth-child(8n) {
+  top: 41.3%;
+  left: 0.75%;
+}
+
+.cmp-selected-letters--radial li:nth-child(9n) {
+  top: 11.7%;
+  left: 17.9%;
 }
 
 .cmp-selected-letters button {

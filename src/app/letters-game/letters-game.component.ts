@@ -22,6 +22,7 @@ export class LettersGameComponent {
   consonantCount = 0;
   timeRemaining = 3;
   roundDuration = 30;
+  letterPositioning = 'linear';
   longestWord = '';
   lettersPlaceholder = new Array(9);
 
@@ -29,12 +30,15 @@ export class LettersGameComponent {
     private lettersService: LettersService,
     private settingsService: SettingsService
   ) {
-    const { timerDuration } = this.settingsService.getSettings();
+    const { timerDuration, letterPositioning } =
+      this.settingsService.getSettings();
     if (timerDuration !== 'off') {
       this.roundDuration = Number.parseInt(timerDuration, 10);
     } else {
       this.roundDuration = 0;
     }
+
+    this.letterPositioning = letterPositioning;
   }
 
   chooseVowel() {
