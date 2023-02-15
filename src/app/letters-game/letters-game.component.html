@@ -40,7 +40,12 @@
 </div>
 
 <div class="cmp-letters">
-  <ul class="cmp-selected-letters">
+  <ul
+    class="cmp-selected-letters"
+    [ngClass]="
+      letterPositioning === 'radial' ? 'cmp-selected-letters--radial' : ''
+    "
+  >
     <li *ngFor="let l of lettersPlaceholder; let i = index">
       <button
         type="button"
