@@ -7,7 +7,7 @@
     "board"
     "letters"
     "controls";
-  grid-template-rows: auto auto 1fr auto auto;
+  grid-template-rows: auto 1fr 1fr auto auto;
   gap: var(--size-s5);
   padding-block: var(--size-s2);
 }
@@ -29,6 +29,7 @@
 
 .cmp-letters {
   grid-area: letters;
+  place-self: center;
 }
 
 .cmp-controls {

@@ -23,26 +23,35 @@
 
 <div class="cmp-board">
   <ul class="cmp-selected-letters" *ngIf="state !== 'game-setup'">
-    <li *ngFor="let letter of word; let i = index">
-      <button type="button" (click)="removeLetter(letter, i)">
-        {{ letter }}
+    <li *ngFor="let l of lettersPlaceholder; let i = index">
+      <button
+        type="button"
+        *ngIf="word[i]"
+        [disabled]="state !== 'game-in-progress'"
+        (click)="removeLetter(word[i], i)"
+      >
+        {{ word[i] }}
+      </button>
+      <button type="button" *ngIf="!word[i]" disabled aria-hidden="true">
+        ?
       </button>
     </li>
   </ul>
 </div>
 
 <div class="cmp-letters">
-  <ul
-    class="cmp-selected-letters"
-    [ngClass]="state !== 'game-setup' ? 'cmp-selected-letters--justify' : ''"
-  >
-    <li *ngFor="let letter of letters">
+  <ul class="cmp-selected-letters">
+    <li *ngFor="let l of lettersPlaceholder; let i = index">
       <button
         type="button"
-        [disabled]="letter.isInUse || state !== 'game-in-progress'"
-        (click)="addLetter(letter)"
+        *ngIf="letters[i]"
+        [disabled]="letters[i].isInUse || state !== 'game-in-progress'"
+        (click)="addLetter(letters[i])"
       >
-        {{ letter.letter }}
+        {{ letters[i].letter }}
+      </button>
+      <button type="button" *ngIf="!letters[i]" disabled aria-hidden="true">
+        ?
       </button>
     </li>
   </ul>
