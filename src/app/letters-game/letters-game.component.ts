@@ -138,6 +138,7 @@ export class LettersGameComponent {
     this.consonantCount = 0;
     this.timeRemaining = 3;
     this.longestWord = '';
+    this.lettersService.restockLetters();
   }
 
   async checkWordValidity() {

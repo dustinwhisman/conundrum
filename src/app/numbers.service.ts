@@ -28,4 +28,9 @@ export class NumbersService {
     this.smallNumbers.splice(index, 1);
     return number;
   }
+
+  restockNumbers() {
+    this.bigNumbers = [...bigNumbers];
+    this.smallNumbers = [...smallNumbers];
+  }
 }
