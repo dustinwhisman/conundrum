@@ -1,14 +1,39 @@
 :host {
   height: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: var(--size-s0);
+  display: grid;
+  grid-template-areas:
+    "title"
+    "instructions"
+    "board"
+    "letters"
+    "controls";
+  grid-template-rows: auto 1fr 1fr auto auto;
+  gap: var(--size-s5);
   padding-block: var(--size-s2);
 }
 
-h1,
-p {
-  text-align: center;
+.cmp-title {
+  grid-area: title;
+  justify-self: center;
+}
+
+.cmp-instructions {
+  grid-area: instructions;
+  justify-self: center;
+}
+
+.cmp-board {
+  grid-area: board;
+  place-self: center;
+}
+
+.cmp-letters {
+  grid-area: letters;
+  place-self: center;
+}
+
+.cmp-controls {
+  grid-area: controls;
 }
 
 .cmp-cv-buttons {
@@ -33,7 +58,6 @@ p {
   display: flex;
   gap: var(--size-s-1);
   flex-wrap: wrap;
-  margin-top: auto;
 }
 
 .cmp-selected-letters--justify {

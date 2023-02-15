@@ -1,76 +1,95 @@
-<h1>Letters Game</h1>
-
-<p *ngIf="state === 'game-setup'">
-  Choose 9 letters with a minimum of 3 vowels and 3 consonants.
-</p>
-<div class="cmp-stack" *ngIf="state === 'game-starting-soon'">
-  <p>Get ready. The game starts in:</p>
-  <p class="cmp-countdown">{{ timeRemaining }}</p>
-</div>
-<div class="cmp-stack" *ngIf="state === 'game-in-progress'">
-  <p>Spell the longest word you can!</p>
-  <p class="cmp-countdown" *ngIf="roundDuration > 0">{{ timeRemaining }}</p>
-  <p class="cmp-longest-word">{{ longestWord }}</p>
-</div>
-<div class="cmp-stack" *ngIf="state === 'game-ended'">
-  <p>Game over! Your longest word was:</p>
-  <p class="cmp-longest-word">{{ longestWord }}</p>
+<div class="cmp-title">
+  <h1>Letters Game</h1>
 </div>
 
-<ul class="cmp-selected-letters" *ngIf="state !== 'game-setup'">
-  <li *ngFor="let letter of word; let i = index">
-    <button type="button" (click)="removeLetter(letter, i)">
-      {{ letter }}
+<div class="cmp-instructions">
+  <p *ngIf="state === 'game-setup'">
+    Choose 9 letters with a minimum of 3 vowels and 3 consonants.
+  </p>
+  <div class="cmp-stack" *ngIf="state === 'game-starting-soon'">
+    <p>Get ready. The game starts in:</p>
+    <p class="cmp-countdown">{{ timeRemaining }}</p>
+  </div>
+  <div class="cmp-stack" *ngIf="state === 'game-in-progress'">
+    <p>Spell the longest word you can!</p>
+    <p class="cmp-countdown" *ngIf="roundDuration > 0">{{ timeRemaining }}</p>
+    <p class="cmp-longest-word">{{ longestWord }}</p>
+  </div>
+  <div class="cmp-stack" *ngIf="state === 'game-ended'">
+    <p>Game over! Your longest word was:</p>
+    <p class="cmp-longest-word">{{ longestWord }}</p>
+  </div>
+</div>
+
+<div class="cmp-board">
+  <ul class="cmp-selected-letters" *ngIf="state !== 'game-setup'">
+    <li *ngFor="let l of lettersPlaceholder; let i = index">
+      <button
+        type="button"
+        *ngIf="word[i]"
+        [disabled]="state !== 'game-in-progress'"
+        (click)="removeLetter(word[i], i)"
+      >
+        {{ word[i] }}
+      </button>
+      <button type="button" *ngIf="!word[i]" disabled aria-hidden="true">
+        ?
+      </button>
+    </li>
+  </ul>
+</div>
+
+<div class="cmp-letters">
+  <ul class="cmp-selected-letters">
+    <li *ngFor="let l of lettersPlaceholder; let i = index">
+      <button
+        type="button"
+        *ngIf="letters[i]"
+        [disabled]="letters[i].isInUse || state !== 'game-in-progress'"
+        (click)="addLetter(letters[i])"
+      >
+        {{ letters[i].letter }}
+      </button>
+      <button type="button" *ngIf="!letters[i]" disabled aria-hidden="true">
+        ?
+      </button>
+    </li>
+  </ul>
+</div>
+
+<div class="cmp-controls">
+  <div class="cmp-cv-buttons" *ngIf="state === 'game-setup'">
+    <button type="button" (click)="chooseVowel()" [disabled]="vowelCount > 5">
+      Vowel
     </button>
-  </li>
-</ul>
-
-<ul
-  class="cmp-selected-letters"
-  [ngClass]="state !== 'game-setup' ? 'cmp-selected-letters--justify' : ''"
->
-  <li *ngFor="let letter of letters">
     <button
       type="button"
-      [disabled]="letter.isInUse || state !== 'game-in-progress'"
-      (click)="addLetter(letter)"
+      (click)="chooseConsonant()"
+      [disabled]="consonantCount > 5"
     >
-      {{ letter.letter }}
+      Consonant
     </button>
-  </li>
-</ul>
-
-<div class="cmp-cv-buttons" *ngIf="state === 'game-setup'">
-  <button type="button" (click)="chooseVowel()" [disabled]="vowelCount > 5">
-    Vowel
-  </button>
-  <button
-    type="button"
-    (click)="chooseConsonant()"
-    [disabled]="consonantCount > 5"
+  </div>
+  <div
+    class="cmp-cv-buttons"
+    *ngIf="state !== 'game-setup' && state !== 'game-ended'"
   >
-    Consonant
-  </button>
-</div>
-<div
-  class="cmp-cv-buttons"
-  *ngIf="state !== 'game-setup' && state !== 'game-ended'"
->
-  <button
-    type="button"
-    [disabled]="state !== 'game-in-progress'"
-    (click)="clearWord()"
-  >
-    Clear word
-  </button>
-  <button type="button" (click)="resetGame()" *ngIf="roundDuration === 0">
-    New Game
-  </button>
-  <a href="/" class="cmp-link-as-button" *ngIf="roundDuration === 0">
-    Main Menu
-  </a>
-</div>
-<div class="cmp-cv-buttons" *ngIf="state === 'game-ended'">
-  <button type="button" (click)="resetGame()">New Game</button>
-  <a href="/" class="cmp-link-as-button"> Main Menu </a>
+    <button
+      type="button"
+      [disabled]="state !== 'game-in-progress'"
+      (click)="clearWord()"
+    >
+      Clear word
+    </button>
+    <button type="button" (click)="resetGame()" *ngIf="roundDuration === 0">
+      New Game
+    </button>
+    <a href="/" class="cmp-link-as-button" *ngIf="roundDuration === 0">
+      Main Menu
+    </a>
+  </div>
+  <div class="cmp-cv-buttons" *ngIf="state === 'game-ended'">
+    <button type="button" (click)="resetGame()">New Game</button>
+    <a href="/" class="cmp-link-as-button"> Main Menu </a>
+  </div>
 </div>

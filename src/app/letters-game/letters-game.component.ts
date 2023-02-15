@@ -23,6 +23,7 @@ export class LettersGameComponent {
   timeRemaining = 3;
   roundDuration = 30;
   longestWord = '';
+  lettersPlaceholder = new Array(9);
 
   constructor(
     private lettersService: LettersService,
