@@ -26,3 +26,7 @@
   text-align: center;
   text-transform: uppercase;
 }
+
+.cmp-menu button {
+  font-size: var(--size-s1);
+}
