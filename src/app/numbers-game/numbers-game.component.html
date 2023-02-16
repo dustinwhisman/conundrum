@@ -34,6 +34,7 @@
     <button
       type="button"
       aria-label="Multiply"
+      (click)="handleOperatorClick('multiplication')"
       [disabled]="state !== 'game-in-progress' || selectedNumber == null"
     >
       &times;
@@ -41,6 +42,7 @@
     <button
       type="button"
       aria-label="Divide"
+      (click)="handleOperatorClick('division')"
       [disabled]="state !== 'game-in-progress' || selectedNumber == null"
     >
       &divide;
@@ -48,6 +50,7 @@
     <button
       type="button"
       aria-label="Add"
+      (click)="handleOperatorClick('addition')"
       [disabled]="state !== 'game-in-progress' || selectedNumber == null"
     >
       &plus;
@@ -55,6 +58,7 @@
     <button
       type="button"
       aria-label="Subtract"
+      (click)="handleOperatorClick('subtraction')"
       [disabled]="state !== 'game-in-progress' || selectedNumber == null"
     >
       &minus;
