@@ -6,3 +6,10 @@
   padding-block: var(--size-s2);
   place-items: center;
 }
+
+.cmp-button-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--size-s0);
+  justify-content: center;
+}

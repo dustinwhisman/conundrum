@@ -60,5 +60,8 @@ export class NumbersGameComponent {
         resultOf: null,
       });
     }
+
+    console.log(this.startingNumbers);
+    this.state = 'game-starting-soon';
   }
 }

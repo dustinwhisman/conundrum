@@ -30,5 +30,16 @@
 </div>
 
 <div class="cmp-menu">
-  <p>TODO: put buttons and links here to control the game</p>
+  <div class="cmp-button-list" *ngIf="state === 'game-setup'">
+    <button type="button" (click)="chooseSpread(0, 6)">0 Big, 6 Small</button>
+    <button type="button" (click)="chooseSpread(1, 5)">1 Big, 5 Small</button>
+    <button type="button" (click)="chooseSpread(2, 4)">2 Big, 4 Small</button>
+    <button type="button" (click)="chooseSpread(3, 3)">3 Big, 3 Small</button>
+    <button type="button" (click)="chooseSpread(4, 2)">4 Big, 2 Small</button>
+  </div>
+  <div class="cmp-button-list" *ngIf="state !== 'game-setup'">
+    <button type="button" *ngFor="let number of startingNumbers">
+      {{ number.number }}
+    </button>
+  </div>
 </div>
