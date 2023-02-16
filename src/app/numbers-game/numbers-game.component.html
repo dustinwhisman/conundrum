@@ -14,8 +14,15 @@
   <p *ngIf="state === 'game-in-progress'">
     Try to multiply, divide, add, and subtract your way to the target!
   </p>
-  <p *ngIf="state === 'game-ended'">Game over!</p>
-  <p *ngIf="timeRemaining > 0" class="cmp-countdown">{{ timeRemaining }}</p>
+  <p *ngIf="state === 'game-ended' && closestDistance !== 0">
+    Game over! The closest you got was {{ closestDistance }} away.
+  </p>
+  <p *ngIf="state === 'game-ended' && closestDistance === 0">
+    Nicely done! You managed to hit the exact target!
+  </p>
+  <p *ngIf="timeRemaining > 0 && state !== 'game-ended'" class="cmp-countdown">
+    {{ timeRemaining }}
+  </p>
 </div>
 
 <div *ngIf="targetValue === 0"></div>
@@ -95,5 +102,21 @@
     <button type="button" (click)="chooseSpread(2, 4)">2 Big, 4 Small</button>
     <button type="button" (click)="chooseSpread(3, 3)">3 Big, 3 Small</button>
     <button type="button" (click)="chooseSpread(4, 2)">4 Big, 2 Small</button>
+  </div>
+  <div
+    class="cmp-button-list"
+    *ngIf="state !== 'game-setup' && state !== 'game-ended'"
+  >
+    <button type="button" (click)="clearWork()">Clear Work</button>
+    <button type="button" *ngIf="roundDuration === 0" (click)="resetGame()">
+      New Game
+    </button>
+    <a href="/" class="cmp-link-as-button" *ngIf="roundDuration === 0">
+      Main Menu
+    </a>
+  </div>
+  <div class="cmp-button-list" *ngIf="state === 'game-ended'">
+    <button type="button" (click)="resetGame()">New Game</button>
+    <a href="/" class="cmp-link-as-button"> Main Menu </a>
   </div>
 </div>
