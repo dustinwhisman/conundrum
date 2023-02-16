@@ -11,6 +11,7 @@ type ResultOf = {
 
 type Number = {
   isInUse: boolean;
+  isSelected: boolean;
   number: BigNumber | SmallNumber;
   resultOf: ResultOf | null;
 };
@@ -24,6 +25,7 @@ export class NumbersGameComponent {
   state: GameState = 'game-setup';
   startingNumbers: Array<Number> = [];
   combinedNumbers: Array<Number> = [];
+  selectedNumber: Number | null = null;
   timeRemaining = 0;
   roundDuration = 30;
   closestValue = 0;
@@ -49,6 +51,7 @@ export class NumbersGameComponent {
     for (let i = 0; i < bigCount; i += 1) {
       this.startingNumbers.push({
         isInUse: false,
+        isSelected: false,
         number: this.numbersService.getBigNumber(),
         resultOf: null,
       });
@@ -57,6 +60,7 @@ export class NumbersGameComponent {
     for (let i = 0; i < smallCount; i += 1) {
       this.startingNumbers.push({
         isInUse: false,
+        isSelected: false,
         number: this.numbersService.getSmallNumber(),
         resultOf: null,
       });
@@ -104,5 +108,26 @@ export class NumbersGameComponent {
     };
 
     checkTime();
+  }
+
+  handleNumberClick(number: Number) {
+    if (this.selectedNumber == null) {
+      this.toggleIsSelected(number);
+      this.selectedNumber = number;
+      return;
+    }
+
+    this.toggleIsInUse(this.selectedNumber);
+    this.toggleIsSelected(this.selectedNumber);
+    this.toggleIsInUse(number);
+    this.selectedNumber = null;
+  }
+
+  toggleIsSelected(number: Number) {
+    number.isSelected = !number.isSelected;
+  }
+
+  toggleIsInUse(number: Number) {
+    number.isInUse = !number.isInUse;
   }
 }
