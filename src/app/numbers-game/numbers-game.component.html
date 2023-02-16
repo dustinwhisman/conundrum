@@ -26,19 +26,63 @@
 </div>
 
 <div class="cmp-combined-numbers">
-  <p>TODO: put numbers resulting from math operations here</p>
+  <div class="cmp-button-list">
+    <button
+      type="button"
+      *ngFor="let number of combinedNumbers"
+      (click)="handleNumberClick(number)"
+      [disabled]="state !== 'game-in-progress' || number.isInUse"
+    >
+      {{ number.number }}
+    </button>
+  </div>
 </div>
 
 <div class="cmp-operators">
-  <p>
-    TODO: put buttons for multiplication, division, addition, and subtraction
-    here
-  </p>
+  <div class="cmp-button-list">
+    <button
+      type="button"
+      aria-label="Multiply"
+      (click)="handleOperatorClick('multiplication')"
+      [disabled]="state !== 'game-in-progress' || selectedNumber == null"
+    >
+      &times;
+    </button>
+    <button
+      type="button"
+      aria-label="Divide"
+      (click)="handleOperatorClick('division')"
+      [disabled]="state !== 'game-in-progress' || selectedNumber == null"
+    >
+      &divide;
+    </button>
+    <button
+      type="button"
+      aria-label="Add"
+      (click)="handleOperatorClick('addition')"
+      [disabled]="state !== 'game-in-progress' || selectedNumber == null"
+    >
+      &plus;
+    </button>
+    <button
+      type="button"
+      aria-label="Subtract"
+      (click)="handleOperatorClick('subtraction')"
+      [disabled]="state !== 'game-in-progress' || selectedNumber == null"
+    >
+      &minus;
+    </button>
+  </div>
 </div>
 
 <div class="cmp-numbers">
   <div class="cmp-button-list" *ngIf="state !== 'game-setup'">
-    <button type="button" *ngFor="let number of startingNumbers">
+    <button
+      type="button"
+      *ngFor="let number of startingNumbers"
+      (click)="handleNumberClick(number)"
+      [disabled]="state !== 'game-in-progress' || number.isInUse"
+    >
       {{ number.number }}
     </button>
   </div>

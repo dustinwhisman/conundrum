@@ -11,7 +11,8 @@ type ResultOf = {
 
 type Number = {
   isInUse: boolean;
-  number: BigNumber | SmallNumber;
+  isSelected: boolean;
+  number: number;
   resultOf: ResultOf | null;
 };
 
@@ -24,6 +25,8 @@ export class NumbersGameComponent {
   state: GameState = 'game-setup';
   startingNumbers: Array<Number> = [];
   combinedNumbers: Array<Number> = [];
+  selectedNumber: Number | null = null;
+  operator: ResultOf['operation'] | null = null;
   timeRemaining = 0;
   roundDuration = 30;
   closestValue = 0;
@@ -49,6 +52,7 @@ export class NumbersGameComponent {
     for (let i = 0; i < bigCount; i += 1) {
       this.startingNumbers.push({
         isInUse: false,
+        isSelected: false,
         number: this.numbersService.getBigNumber(),
         resultOf: null,
       });
@@ -57,6 +61,7 @@ export class NumbersGameComponent {
     for (let i = 0; i < smallCount; i += 1) {
       this.startingNumbers.push({
         isInUse: false,
+        isSelected: false,
         number: this.numbersService.getSmallNumber(),
         resultOf: null,
       });
@@ -104,5 +109,104 @@ export class NumbersGameComponent {
     };
 
     checkTime();
+  }
+
+  doMath(
+    numberOne: Number,
+    numberTwo: Number,
+    operator: ResultOf['operation']
+  ) {
+    let result: number;
+    switch (operator) {
+      case 'multiplication':
+        result = numberOne.number * numberTwo.number;
+        break;
+      case 'division':
+        // for simplicity, we'll round down any division resulting in remainders
+        result = Math.floor(numberOne.number / numberTwo.number);
+        break;
+      case 'addition':
+        result = numberOne.number + numberTwo.number;
+        break;
+      case 'subtraction':
+        // for simplicity, we only want positive numbers
+        result = Math.abs(numberOne.number - numberTwo.number);
+        break;
+    }
+
+    if (numberOne.resultOf != null) {
+      const index = this.combinedNumbers.findIndex(
+        ({ resultOf }: Number) =>
+          resultOf != null &&
+          Object.keys(resultOf).every(
+            (key) =>
+              resultOf[key as keyof ResultOf] ===
+              numberOne.resultOf?.[key as keyof ResultOf]
+          )
+      );
+
+      if (index > -1) {
+        this.combinedNumbers.splice(index, 1);
+      }
+    }
+
+    if (numberTwo.resultOf != null) {
+      const index = this.combinedNumbers.findIndex(
+        ({ resultOf }: Number) =>
+          resultOf != null &&
+          Object.keys(resultOf).every(
+            (key) =>
+              resultOf[key as keyof ResultOf] ===
+              numberTwo.resultOf?.[key as keyof ResultOf]
+          )
+      );
+
+      if (index > -1) {
+        this.combinedNumbers.splice(index, 1);
+      }
+    }
+
+    this.combinedNumbers.push({
+      isInUse: false,
+      isSelected: false,
+      number: result,
+      resultOf: {
+        firstNumber: numberOne.number,
+        secondNumber: numberTwo.number,
+        operation: operator,
+      },
+    });
+    console.log(this.combinedNumbers);
+  }
+
+  handleNumberClick(number: Number) {
+    if (this.selectedNumber == null) {
+      this.toggleIsSelected(number);
+      this.selectedNumber = number;
+      return;
+    }
+
+    if (this.operator == null) {
+      return;
+    }
+
+    this.toggleIsInUse(this.selectedNumber);
+    this.toggleIsSelected(this.selectedNumber);
+    this.toggleIsInUse(number);
+
+    this.doMath(this.selectedNumber, number, this.operator);
+    this.selectedNumber = null;
+  }
+
+  handleOperatorClick(operator: ResultOf['operation']) {
+    this.operator = operator;
+  }
+
+  toggleIsSelected(number: Number) {
+    number.isSelected = !number.isSelected;
+  }
+
+  toggleIsInUse(number: Number) {
+    number.isInUse = !number.isInUse;
   }
 }
