@@ -13,3 +13,16 @@
   gap: var(--size-s0);
   justify-content: center;
 }
+
+.cmp-instructions,
+.cmp-target {
+  text-align: center;
+}
+
+.cmp-countdown,
+.cmp-target-number {
+  font-family: var(--mono);
+  font-size: var(--size-s5);
+  text-align: center;
+  text-transform: uppercase;
+}
