@@ -3,15 +3,26 @@
 </div>
 
 <div class="cmp-instructions">
-  <p>
-    Choose a blend of numbers. Big numbers, include 25, 50, 75, and 100. Small
+  <p *ngIf="state === 'game-setup'">
+    Choose a blend of numbers. Big numbers include 25, 50, 75, and 100. Small
     numbers go from 1 to 10.
   </p>
+  <p *ngIf="state === 'game-setting-target'">
+    Your numbers have been randomly selected. Setting your target number in:
+  </p>
+  <p *ngIf="state === 'game-starting-soon'">Get ready. Your time starts in:</p>
+  <p *ngIf="state === 'game-in-progress'">
+    Try to multiply, divide, add, and subtract your way to the target!
+  </p>
+  <p *ngIf="state === 'game-ended'">Game over!</p>
+  <p *ngIf="timeRemaining > 0" class="cmp-countdown">{{ timeRemaining }}</p>
 </div>
 
-<div class="cmp-target">
+<div *ngIf="targetValue === 0"></div>
+
+<div class="cmp-target" *ngIf="targetValue > 0">
   <p>The target is:</p>
-  <p class="cmp-target-number">751</p>
+  <p class="cmp-target-number">{{ targetValue }}</p>
 </div>
 
 <div class="cmp-combined-numbers">
@@ -26,7 +37,11 @@
 </div>
 
 <div class="cmp-numbers">
-  <p>TODO: display the randomly selected numbers here</p>
+  <div class="cmp-button-list" *ngIf="state !== 'game-setup'">
+    <button type="button" *ngFor="let number of startingNumbers">
+      {{ number.number }}
+    </button>
+  </div>
 </div>
 
 <div class="cmp-menu">
@@ -36,10 +51,5 @@
     <button type="button" (click)="chooseSpread(2, 4)">2 Big, 4 Small</button>
     <button type="button" (click)="chooseSpread(3, 3)">3 Big, 3 Small</button>
     <button type="button" (click)="chooseSpread(4, 2)">4 Big, 2 Small</button>
-  </div>
-  <div class="cmp-button-list" *ngIf="state !== 'game-setup'">
-    <button type="button" *ngFor="let number of startingNumbers">
-      {{ number.number }}
-    </button>
   </div>
 </div>

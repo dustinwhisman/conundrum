@@ -24,9 +24,10 @@ export class NumbersGameComponent {
   state: GameState = 'game-setup';
   startingNumbers: Array<Number> = [];
   combinedNumbers: Array<Number> = [];
-  timeRemaining = 3;
+  timeRemaining = 0;
   roundDuration = 30;
   closestValue = 0;
+  targetValue = 0;
 
   constructor(
     private numbersService: NumbersService,
@@ -61,7 +62,47 @@ export class NumbersGameComponent {
       });
     }
 
-    console.log(this.startingNumbers);
-    this.state = 'game-starting-soon';
+    this.state = 'game-setting-target';
+    this.startCountdown(3);
+  }
+
+  startCountdown(durationInSeconds: number) {
+    this.timeRemaining = durationInSeconds;
+    const endTime = Date.now() + durationInSeconds * 1000;
+
+    const checkTime = () => {
+      const now = Date.now();
+      const remaining = endTime - now;
+
+      if (remaining <= 0) {
+        this.timeRemaining = 0;
+        if (this.state === 'game-setting-target') {
+          this.targetValue = Math.ceil(Math.random() * 900 + 100);
+          this.state = 'game-starting-soon';
+
+          this.startCountdown(3);
+          return;
+        }
+
+        if (this.state === 'game-starting-soon') {
+          this.state = 'game-in-progress';
+
+          if (this.roundDuration > 0) {
+            this.startCountdown(this.roundDuration);
+          }
+          return;
+        }
+
+        if (this.state === 'game-in-progress') {
+          this.state = 'game-ended';
+          return;
+        }
+      } else {
+        this.timeRemaining = Math.ceil(remaining / 1000);
+        requestAnimationFrame(checkTime);
+      }
+    };
+
+    checkTime();
   }
 }

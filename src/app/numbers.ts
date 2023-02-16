@@ -3,6 +3,7 @@ export type SmallNumber = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
 
 export type GameState =
   | 'game-setup'
+  | 'game-setting-target'
   | 'game-starting-soon'
   | 'game-in-progress'
   | 'game-ended';
