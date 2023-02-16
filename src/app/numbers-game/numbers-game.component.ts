@@ -209,4 +209,14 @@ export class NumbersGameComponent {
   toggleIsInUse(number: Number) {
     number.isInUse = !number.isInUse;
   }
+
+  clearWork() {
+    this.combinedNumbers = [];
+    this.selectedNumber = null;
+    this.operator = null;
+    this.startingNumbers.forEach((number) => {
+      number.isInUse = false;
+      number.isSelected = false;
+    });
+  }
 }

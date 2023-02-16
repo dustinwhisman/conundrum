@@ -100,7 +100,7 @@
     class="cmp-button-list"
     *ngIf="state !== 'game-setup' && state !== 'game-ended'"
   >
-    <button type="button">Clear Work</button>
+    <button type="button" (click)="clearWork()">Clear Work</button>
     <button type="button" *ngIf="roundDuration === 0">New Game</button>
     <a href="/" class="cmp-link-as-button" *ngIf="roundDuration === 0">
       Main Menu
