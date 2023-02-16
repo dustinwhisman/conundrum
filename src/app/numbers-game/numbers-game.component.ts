@@ -29,6 +29,7 @@ export class NumbersGameComponent {
   operator: ResultOf['operation'] | null = null;
   timeRemaining = 0;
   roundDuration = 30;
+  closestDistance = Infinity;
   closestValue = 0;
   targetValue = 0;
 
@@ -134,6 +135,17 @@ export class NumbersGameComponent {
         break;
     }
 
+    const distanceAway = Math.abs(this.targetValue - result);
+
+    if (distanceAway < this.closestDistance) {
+      this.closestDistance = distanceAway;
+      this.closestValue = result;
+    }
+
+    if (distanceAway === 0) {
+      this.state = 'game-ended';
+    }
+
     if (numberOne.resultOf != null) {
       const index = this.combinedNumbers.findIndex(
         ({ resultOf }: Number) =>
@@ -176,7 +188,6 @@ export class NumbersGameComponent {
         operation: operator,
       },
     });
-    console.log(this.combinedNumbers);
   }
 
   handleNumberClick(number: Number) {
@@ -218,5 +229,18 @@ export class NumbersGameComponent {
       number.isInUse = false;
       number.isSelected = false;
     });
+  }
+
+  resetGame() {
+    this.state = 'game-setup';
+    this.startingNumbers = [];
+    this.combinedNumbers = [];
+    this.selectedNumber = null;
+    this.operator = null;
+    this.timeRemaining = 0;
+    this.closestDistance = Infinity;
+    this.closestValue = 0;
+    this.targetValue = 0;
+    this.numbersService.restockNumbers();
   }
 }
