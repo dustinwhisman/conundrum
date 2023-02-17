@@ -10,6 +10,7 @@ import { NumbersGameComponent } from './numbers-game/numbers-game.component';
 import { SettingsComponent } from './settings/settings.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { RadioGroupComponent } from './radio-group/radio-group.component';
+import { LettersGameInstructionsComponent } from './letters-game-instructions/letters-game-instructions.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { RadioGroupComponent } from './radio-group/radio-group.component';
     SettingsComponent,
     NavMenuComponent,
     RadioGroupComponent,
+    LettersGameInstructionsComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
   providers: [],

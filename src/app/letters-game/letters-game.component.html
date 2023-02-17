@@ -1,26 +1,11 @@
 <h1>Letters Game</h1>
 
-<div class="cmp-instructions">
-  <p *ngIf="state === 'game-setup'">
-    Choose 9 letters with a minimum of 3 vowels and 3 consonants.
-  </p>
-  <div class="cmp-stack" *ngIf="state === 'game-starting-soon'">
-    <p>Get ready. The game starts in:</p>
-    <p class="cmp-countdown">{{ timeRemaining }}</p>
-  </div>
-  <div class="cmp-stack" *ngIf="state === 'game-in-progress'">
-    <p>Spell the longest word you can!</p>
-    <p class="cmp-countdown" *ngIf="roundDuration > 0">{{ timeRemaining }}</p>
-    <p class="cmp-longest-word">{{ longestWord }}</p>
-  </div>
-  <div class="cmp-stack" *ngIf="state === 'game-ended'">
-    <p *ngIf="longestWord.length < 9">Game over! Your longest word was:</p>
-    <p *ngIf="longestWord.length === 9">
-      Nicely done! You found a 9 letter word!
-    </p>
-    <p class="cmp-longest-word">{{ longestWord }}</p>
-  </div>
-</div>
+<app-letters-game-instructions
+  [state]="state"
+  [timeRemaining]="timeRemaining"
+  [roundDuration]="roundDuration"
+  [longestWord]="longestWord"
+></app-letters-game-instructions>
 
 <div class="cmp-board">
   <ul class="cmp-selected-letters" *ngIf="state !== 'game-setup'">
