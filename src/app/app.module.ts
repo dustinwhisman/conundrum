@@ -9,6 +9,7 @@ import { LettersGameComponent } from './letters-game/letters-game.component';
 import { NumbersGameComponent } from './numbers-game/numbers-game.component';
 import { SettingsComponent } from './settings/settings.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
+import { RadioGroupComponent } from './radio-group/radio-group.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
     NumbersGameComponent,
     SettingsComponent,
     NavMenuComponent,
+    RadioGroupComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
   providers: [],
