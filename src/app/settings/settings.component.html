@@ -5,8 +5,7 @@
   (ngSubmit)="onSubmit()"
   class="cmp-settings-form"
 >
-  <fieldset>
-    <legend>Timer Duration</legend>
+  <app-radio-group legend="Timer Duration">
     <div>
       <input
         id="timerDuration30"
@@ -37,9 +36,8 @@
       />
       <label for="timerDurationOff"> No timer </label>
     </div>
-  </fieldset>
-  <fieldset>
-    <legend>Letter Positioning</legend>
+  </app-radio-group>
+  <app-radio-group legend="Letter Positioning">
     <div>
       <input
         id="letterPositioningLinear"
@@ -62,7 +60,7 @@
       />
       <label for="letterPositioningRadial"> Arrange letters in a circle </label>
     </div>
-  </fieldset>
+  </app-radio-group>
   <div>
     <button type="submit">Save Settings</button>
   </div>
