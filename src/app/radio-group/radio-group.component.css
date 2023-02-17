@@ -11,3 +11,9 @@ legend {
   font-size: var(--size-s1);
   margin-block-end: var(--size-s-3);
 }
+
+input[type="radio"] {
+  accent-color: var(--ink);
+  width: var(--size-s0);
+  height: var(--size-s0);
+}

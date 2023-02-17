@@ -1,4 +1,6 @@
 import { Component, Input } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+import type { RadioGroup } from '../form-controls.type';
 
 @Component({
   selector: 'app-radio-group',
@@ -6,5 +8,6 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./radio-group.component.css'],
 })
 export class RadioGroupComponent {
-  @Input() legend: string | undefined;
+  @Input() formGroup: FormGroup | undefined;
+  @Input() radioGroup: RadioGroup | undefined;
 }
