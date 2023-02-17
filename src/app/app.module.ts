@@ -8,6 +8,7 @@ import { GameSelectionComponent } from './game-selection/game-selection.componen
 import { LettersGameComponent } from './letters-game/letters-game.component';
 import { NumbersGameComponent } from './numbers-game/numbers-game.component';
 import { SettingsComponent } from './settings/settings.component';
+import { NavMenuComponent } from './nav-menu/nav-menu.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { SettingsComponent } from './settings/settings.component';
     LettersGameComponent,
     NumbersGameComponent,
     SettingsComponent,
+    NavMenuComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
   providers: [],
