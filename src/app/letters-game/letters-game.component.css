@@ -6,8 +6,8 @@
   padding-block: var(--size-s2);
 }
 
-.cmp-title {
-  justify-self: center;
+h1 {
+  text-align: center;
 }
 
 .cmp-instructions {
