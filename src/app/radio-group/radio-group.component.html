@@ -1,0 +1,16 @@
+<fieldset
+  *ngIf="radioGroup != null && formGroup != null && radioGroup.options.length"
+  [formGroup]="formGroup"
+>
+  <legend>{{ radioGroup.legend }}</legend>
+  <div *ngFor="let option of radioGroup.options">
+    <input
+      [id]="radioGroup.name + option.value"
+      type="radio"
+      [formControlName]="radioGroup.name"
+      [name]="radioGroup.name"
+      [value]="option.value"
+    />
+    <label [for]="radioGroup.name + option.value"> {{ option.label }} </label>
+  </div>
+</fieldset>
