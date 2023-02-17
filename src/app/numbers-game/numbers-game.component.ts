@@ -27,6 +27,7 @@ export class NumbersGameComponent {
   combinedNumbers: Array<Number> = [];
   selectedNumber: Number | null = null;
   operator: ResultOf['operation'] | null = null;
+  endTime = Date.now();
   timeRemaining = 0;
   roundDuration = 30;
   closestDistance = Infinity;
@@ -74,11 +75,11 @@ export class NumbersGameComponent {
 
   startCountdown(durationInSeconds: number) {
     this.timeRemaining = durationInSeconds;
-    const endTime = Date.now() + durationInSeconds * 1000;
+    this.endTime = Date.now() + durationInSeconds * 1000;
 
     const checkTime = () => {
       const now = Date.now();
-      const remaining = endTime - now;
+      const remaining = this.endTime - now;
 
       if (remaining <= 0) {
         this.timeRemaining = 0;
@@ -144,6 +145,7 @@ export class NumbersGameComponent {
 
     if (distanceAway === 0) {
       this.state = 'game-ended';
+      this.endTime = Date.now();
     }
 
     if (numberOne.resultOf != null) {

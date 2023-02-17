@@ -16,7 +16,10 @@
     <p class="cmp-longest-word">{{ longestWord }}</p>
   </div>
   <div class="cmp-stack" *ngIf="state === 'game-ended'">
-    <p>Game over! Your longest word was:</p>
+    <p *ngIf="longestWord.length < 9">Game over! Your longest word was:</p>
+    <p *ngIf="longestWord.length === 9">
+      Nicely done! You found a 9 letter word!
+    </p>
     <p class="cmp-longest-word">{{ longestWord }}</p>
   </div>
 </div>

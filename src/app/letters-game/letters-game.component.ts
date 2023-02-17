@@ -20,6 +20,7 @@ export class LettersGameComponent {
   word: Array<Consonant | Vowel> = [];
   vowelCount = 0;
   consonantCount = 0;
+  endTime = Date.now();
   timeRemaining = 3;
   roundDuration = 30;
   letterPositioning = 'linear';
@@ -100,11 +101,11 @@ export class LettersGameComponent {
   }
 
   startCountdown(durationInSeconds: number) {
-    const endTime = Date.now() + durationInSeconds * 1000;
+    this.endTime = Date.now() + durationInSeconds * 1000;
 
     const checkTime = () => {
       const now = Date.now();
-      const remaining = endTime - now;
+      const remaining = this.endTime - now;
 
       if (remaining <= 0) {
         this.timeRemaining = 0;
@@ -156,6 +157,10 @@ export class LettersGameComponent {
 
     if (response.some((obj: any) => typeof obj === 'object')) {
       this.longestWord = this.word.join('');
+      if (this.longestWord.length === 9) {
+        this.state = 'game-ended';
+        this.endTime = Date.now();
+      }
     }
   }
 }
