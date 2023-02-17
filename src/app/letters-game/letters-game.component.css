@@ -1,38 +1,21 @@
 :host {
   height: 100%;
   display: grid;
-  grid-template-areas:
-    "title"
-    "instructions"
-    "board"
-    "letters"
-    "controls";
   grid-template-rows: auto 1fr 1fr auto auto;
   gap: var(--size-s5);
   padding-block: var(--size-s2);
 }
 
 .cmp-title {
-  grid-area: title;
   justify-self: center;
 }
 
 .cmp-instructions {
-  grid-area: instructions;
   justify-self: center;
 }
 
 .cmp-board {
-  grid-area: board;
   place-self: center;
-}
-
-.cmp-letters {
-  grid-area: letters;
-}
-
-.cmp-controls {
-  grid-area: controls;
 }
 
 .cmp-cv-buttons {
