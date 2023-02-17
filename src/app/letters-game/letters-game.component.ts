@@ -82,7 +82,13 @@ export class LettersGameComponent {
     this.checkWordValidity();
   }
 
-  removeLetter(letter: Consonant | Vowel, index: number) {
+  onRemoveLetter({
+    letter,
+    index,
+  }: {
+    letter: Consonant | Vowel;
+    index: number;
+  }) {
     this.word.splice(index, 1);
     const matchingLetter = this.letters.find(
       (l) => l.letter === letter && l.isInUse

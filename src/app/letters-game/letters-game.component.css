@@ -10,10 +10,6 @@ h1 {
   text-align: center;
 }
 
-.cmp-board {
-  place-self: center;
-}
-
 .cmp-cv-buttons {
   display: flex;
   flex-wrap: wrap;

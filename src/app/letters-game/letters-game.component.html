@@ -7,23 +7,11 @@
   [longestWord]="longestWord"
 ></app-letters-game-instructions>
 
-<div class="cmp-board">
-  <ul class="cmp-selected-letters" *ngIf="state !== 'game-setup'">
-    <li *ngFor="let l of lettersPlaceholder; let i = index">
-      <button
-        type="button"
-        *ngIf="word[i]"
-        [disabled]="state !== 'game-in-progress'"
-        (click)="removeLetter(word[i], i)"
-      >
-        {{ word[i] }}
-      </button>
-      <button type="button" *ngIf="!word[i]" disabled aria-hidden="true">
-        ?
-      </button>
-    </li>
-  </ul>
-</div>
+<app-letters-game-board
+  [state]="state"
+  [word]="word"
+  (removeLetter)="onRemoveLetter($event)"
+></app-letters-game-board>
 
 <div class="cmp-letters">
   <ul
