@@ -14,42 +14,11 @@
   (selectNumber)="handleNumberClick($event)"
 ></app-numbers-game-combined-numbers>
 
-<div class="cmp-operators">
-  <div class="cmp-button-list">
-    <button
-      type="button"
-      aria-label="Multiply"
-      (click)="handleOperatorClick('multiplication')"
-      [disabled]="state !== 'game-in-progress' || selectedNumber == null"
-    >
-      &times;
-    </button>
-    <button
-      type="button"
-      aria-label="Divide"
-      (click)="handleOperatorClick('division')"
-      [disabled]="state !== 'game-in-progress' || selectedNumber == null"
-    >
-      &divide;
-    </button>
-    <button
-      type="button"
-      aria-label="Add"
-      (click)="handleOperatorClick('addition')"
-      [disabled]="state !== 'game-in-progress' || selectedNumber == null"
-    >
-      &plus;
-    </button>
-    <button
-      type="button"
-      aria-label="Subtract"
-      (click)="handleOperatorClick('subtraction')"
-      [disabled]="state !== 'game-in-progress' || selectedNumber == null"
-    >
-      &minus;
-    </button>
-  </div>
-</div>
+<app-numbers-game-operators
+  [state]="state"
+  [selectedNumber]="selectedNumber"
+  (selectOperator)="handleOperatorClick($event)"
+></app-numbers-game-operators>
 
 <div class="cmp-numbers">
   <div class="cmp-button-list" *ngIf="state !== 'game-setup'">

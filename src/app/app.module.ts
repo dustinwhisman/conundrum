@@ -17,6 +17,7 @@ import { LettersGameMenuComponent } from './letters-game-menu/letters-game-menu.
 import { NumbersGameInstructionsComponent } from './numbers-game-instructions/numbers-game-instructions.component';
 import { NumbersGameTargetComponent } from './numbers-game-target/numbers-game-target.component';
 import { NumbersGameCombinedNumbersComponent } from './numbers-game-combined-numbers/numbers-game-combined-numbers.component';
+import { NumbersGameOperatorsComponent } from './numbers-game-operators/numbers-game-operators.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { NumbersGameCombinedNumbersComponent } from './numbers-game-combined-num
     NumbersGameInstructionsComponent,
     NumbersGameTargetComponent,
     NumbersGameCombinedNumbersComponent,
+    NumbersGameOperatorsComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
   providers: [],
