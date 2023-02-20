@@ -1,0 +1,11 @@
+:host {
+  display: flex;
+  gap: var(--size-s-1);
+  flex-wrap: wrap;
+  place-content: center;
+}
+
+button {
+  text-transform: uppercase;
+  font-size: var(--size-s0);
+}

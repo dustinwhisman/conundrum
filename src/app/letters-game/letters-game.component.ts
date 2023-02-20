@@ -1,13 +1,9 @@
 import { Component } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import type { Consonant, Vowel, GameState } from '../letters';
+import type { Consonant, Vowel, Letter, GameState } from '../letters';
 import { LettersService } from '../letters.service';
+import { Settings } from '../settings';
 import { SettingsService } from '../settings.service';
-
-type Letter = {
-  isInUse: boolean;
-  letter: Consonant | Vowel;
-};
 
 @Component({
   selector: 'app-letters-game',
@@ -23,7 +19,7 @@ export class LettersGameComponent {
   endTime = Date.now();
   timeRemaining = 3;
   roundDuration = 30;
-  letterPositioning = 'linear';
+  letterPositioning: Settings['letterPositioning'] = 'linear';
   longestWord = '';
   lettersPlaceholder = new Array(9);
 
@@ -42,7 +38,7 @@ export class LettersGameComponent {
     this.letterPositioning = letterPositioning;
   }
 
-  chooseVowel() {
+  onChooseVowel() {
     if (this.state !== 'game-setup' || this.vowelCount > 5) {
       return;
     }
@@ -59,7 +55,7 @@ export class LettersGameComponent {
     }
   }
 
-  chooseConsonant() {
+  onChooseConsonant() {
     if (this.state !== 'game-setup' || this.consonantCount > 5) {
       return;
     }
@@ -76,13 +72,19 @@ export class LettersGameComponent {
     }
   }
 
-  addLetter(letter: Letter) {
+  onAddLetter(letter: Letter) {
     letter.isInUse = true;
     this.word.push(letter.letter);
     this.checkWordValidity();
   }
 
-  removeLetter(letter: Consonant | Vowel, index: number) {
+  onRemoveLetter({
+    letter,
+    index,
+  }: {
+    letter: Consonant | Vowel;
+    index: number;
+  }) {
     this.word.splice(index, 1);
     const matchingLetter = this.letters.find(
       (l) => l.letter === letter && l.isInUse
@@ -93,7 +95,7 @@ export class LettersGameComponent {
     this.checkWordValidity();
   }
 
-  clearWord() {
+  onClearWord() {
     this.letters.forEach((letter) => {
       letter.isInUse = false;
     });
@@ -131,7 +133,7 @@ export class LettersGameComponent {
     checkTime();
   }
 
-  resetGame() {
+  onResetGame() {
     this.state = 'game-setup';
     this.letters = [];
     this.word = [];

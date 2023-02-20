@@ -1,0 +1,15 @@
+<ng-container *ngIf="state !== 'game-setup'">
+  <ng-container *ngFor="let l of lettersPlaceholder; let i = index">
+    <button
+      type="button"
+      *ngIf="word[i]"
+      [disabled]="state !== 'game-in-progress'"
+      (click)="removeLetter.emit({ letter: word[i], index: i })"
+    >
+      {{ word[i] }}
+    </button>
+    <button type="button" *ngIf="!word[i]" disabled aria-hidden="true">
+      ?
+    </button>
+  </ng-container>
+</ng-container>

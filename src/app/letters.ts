@@ -22,6 +22,11 @@ export type Consonant =
   | 'y'
   | 'z';
 
+export type Letter = {
+  isInUse: boolean;
+  letter: Consonant | Vowel;
+};
+
 export type GameState =
   | 'game-setup'
   | 'game-starting-soon'

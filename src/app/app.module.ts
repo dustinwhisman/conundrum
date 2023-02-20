@@ -10,6 +10,10 @@ import { NumbersGameComponent } from './numbers-game/numbers-game.component';
 import { SettingsComponent } from './settings/settings.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { RadioGroupComponent } from './radio-group/radio-group.component';
+import { LettersGameInstructionsComponent } from './letters-game-instructions/letters-game-instructions.component';
+import { LettersGameBoardComponent } from './letters-game-board/letters-game-board.component';
+import { LettersGameSelectedLettersComponent } from './letters-game-selected-letters/letters-game-selected-letters.component';
+import { LettersGameMenuComponent } from './letters-game-menu/letters-game-menu.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +24,10 @@ import { RadioGroupComponent } from './radio-group/radio-group.component';
     SettingsComponent,
     NavMenuComponent,
     RadioGroupComponent,
+    LettersGameInstructionsComponent,
+    LettersGameBoardComponent,
+    LettersGameSelectedLettersComponent,
+    LettersGameMenuComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
   providers: [],
