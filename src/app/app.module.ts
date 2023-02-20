@@ -14,6 +14,12 @@ import { LettersGameInstructionsComponent } from './letters-game-instructions/le
 import { LettersGameBoardComponent } from './letters-game-board/letters-game-board.component';
 import { LettersGameSelectedLettersComponent } from './letters-game-selected-letters/letters-game-selected-letters.component';
 import { LettersGameMenuComponent } from './letters-game-menu/letters-game-menu.component';
+import { NumbersGameInstructionsComponent } from './numbers-game-instructions/numbers-game-instructions.component';
+import { NumbersGameTargetComponent } from './numbers-game-target/numbers-game-target.component';
+import { NumbersGameCombinedNumbersComponent } from './numbers-game-combined-numbers/numbers-game-combined-numbers.component';
+import { NumbersGameOperatorsComponent } from './numbers-game-operators/numbers-game-operators.component';
+import { NumbersGameStartingNumbersComponent } from './numbers-game-starting-numbers/numbers-game-starting-numbers.component';
+import { NumbersGameMenuComponent } from './numbers-game-menu/numbers-game-menu.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +34,12 @@ import { LettersGameMenuComponent } from './letters-game-menu/letters-game-menu.
     LettersGameBoardComponent,
     LettersGameSelectedLettersComponent,
     LettersGameMenuComponent,
+    NumbersGameInstructionsComponent,
+    NumbersGameTargetComponent,
+    NumbersGameCombinedNumbersComponent,
+    NumbersGameOperatorsComponent,
+    NumbersGameStartingNumbersComponent,
+    NumbersGameMenuComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
   providers: [],

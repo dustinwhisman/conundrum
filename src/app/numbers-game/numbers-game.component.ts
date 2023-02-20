@@ -1,20 +1,7 @@
 import { Component } from '@angular/core';
-import type { BigNumber, SmallNumber, GameState } from '../numbers';
+import type { ResultOf, Number, GameState } from '../numbers';
 import { NumbersService } from '../numbers.service';
 import { SettingsService } from '../settings.service';
-
-type ResultOf = {
-  firstNumber: number;
-  secondNumber: number;
-  operation: 'multiplication' | 'division' | 'addition' | 'subtraction';
-};
-
-type Number = {
-  isInUse: boolean;
-  isSelected: boolean;
-  number: number;
-  resultOf: ResultOf | null;
-};
 
 @Component({
   selector: 'app-numbers-game',
@@ -46,12 +33,18 @@ export class NumbersGameComponent {
     }
   }
 
-  chooseSpread(bigCount: number, smallCount: number) {
+  onChooseSpread({
+    bigNumbers,
+    smallNumbers,
+  }: {
+    bigNumbers: number;
+    smallNumbers: number;
+  }) {
     if (this.state !== 'game-setup') {
       return;
     }
 
-    for (let i = 0; i < bigCount; i += 1) {
+    for (let i = 0; i < bigNumbers; i += 1) {
       this.startingNumbers.push({
         isInUse: false,
         isSelected: false,
@@ -60,7 +53,7 @@ export class NumbersGameComponent {
       });
     }
 
-    for (let i = 0; i < smallCount; i += 1) {
+    for (let i = 0; i < smallNumbers; i += 1) {
       this.startingNumbers.push({
         isInUse: false,
         isSelected: false,
@@ -223,7 +216,7 @@ export class NumbersGameComponent {
     number.isInUse = !number.isInUse;
   }
 
-  clearWork() {
+  onClearWork() {
     this.combinedNumbers = [];
     this.selectedNumber = null;
     this.operator = null;
@@ -233,7 +226,7 @@ export class NumbersGameComponent {
     });
   }
 
-  resetGame() {
+  onResetGame() {
     this.state = 'game-setup';
     this.startingNumbers = [];
     this.combinedNumbers = [];

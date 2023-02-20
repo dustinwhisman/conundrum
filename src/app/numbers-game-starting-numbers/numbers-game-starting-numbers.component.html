@@ -1,0 +1,10 @@
+<ng-container *ngIf="state !== 'game-setup'">
+  <button
+    type="button"
+    *ngFor="let number of startingNumbers"
+    (click)="selectNumber.emit(number)"
+    [disabled]="state !== 'game-in-progress' || number.isInUse"
+  >
+    {{ number.number }}
+  </button>
+</ng-container>

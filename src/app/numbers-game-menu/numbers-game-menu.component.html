@@ -1,0 +1,48 @@
+<div class="cmp-button-list" *ngIf="state === 'game-setup'">
+  <button
+    type="button"
+    (click)="chooseSpread.emit({ bigNumbers: 0, smallNumbers: 6 })"
+  >
+    0 Big, 6 Small
+  </button>
+  <button
+    type="button"
+    (click)="chooseSpread.emit({ bigNumbers: 1, smallNumbers: 5 })"
+  >
+    1 Big, 5 Small
+  </button>
+  <button
+    type="button"
+    (click)="chooseSpread.emit({ bigNumbers: 2, smallNumbers: 4 })"
+  >
+    2 Big, 4 Small
+  </button>
+  <button
+    type="button"
+    (click)="chooseSpread.emit({ bigNumbers: 3, smallNumbers: 3 })"
+  >
+    3 Big, 3 Small
+  </button>
+  <button
+    type="button"
+    (click)="chooseSpread.emit({ bigNumbers: 4, smallNumbers: 2 })"
+  >
+    4 Big, 2 Small
+  </button>
+</div>
+<div
+  class="cmp-button-list"
+  *ngIf="state !== 'game-setup' && state !== 'game-ended'"
+>
+  <button type="button" (click)="clearWork.emit()">Clear Work</button>
+  <button type="button" *ngIf="roundDuration === 0" (click)="resetGame.emit()">
+    New Game
+  </button>
+  <a href="/" class="cmp-link-as-button" *ngIf="roundDuration === 0">
+    Main Menu
+  </a>
+</div>
+<div class="cmp-button-list" *ngIf="state === 'game-ended'">
+  <button type="button" (click)="resetGame.emit()">New Game</button>
+  <a href="/" class="cmp-link-as-button"> Main Menu </a>
+</div>

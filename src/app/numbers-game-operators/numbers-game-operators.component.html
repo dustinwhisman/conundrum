@@ -1,0 +1,32 @@
+<button
+  type="button"
+  aria-label="Multiply"
+  (click)="selectOperator.emit('multiplication')"
+  [disabled]="state !== 'game-in-progress' || selectedNumber == null"
+>
+  &times;
+</button>
+<button
+  type="button"
+  aria-label="Divide"
+  (click)="selectOperator.emit('division')"
+  [disabled]="state !== 'game-in-progress' || selectedNumber == null"
+>
+  &divide;
+</button>
+<button
+  type="button"
+  aria-label="Add"
+  (click)="selectOperator.emit('addition')"
+  [disabled]="state !== 'game-in-progress' || selectedNumber == null"
+>
+  &plus;
+</button>
+<button
+  type="button"
+  aria-label="Subtract"
+  (click)="selectOperator.emit('subtraction')"
+  [disabled]="state !== 'game-in-progress' || selectedNumber == null"
+>
+  &minus;
+</button>
