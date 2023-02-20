@@ -7,7 +7,7 @@
 
   .cmp-game-selection a {
     font-family: var(--mono);
-    font-size: var(--size-s5);
+    font-size: var(--size-s3);
     text-decoration: none;
     border: 0.125rem solid currentColor;
     padding: 0.5em 1em;

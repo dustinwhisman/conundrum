@@ -1,10 +1,6 @@
 <h1>Settings</h1>
 
-<form
-  [formGroup]="settingsForm"
-  (ngSubmit)="onSubmit()"
-  class="cmp-settings-form"
->
+<form [formGroup]="settingsForm" (ngSubmit)="onSubmit()">
   <app-radio-group
     [formGroup]="settingsForm"
     [radioGroup]="timerDurationControl"
