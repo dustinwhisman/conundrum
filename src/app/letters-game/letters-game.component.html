@@ -20,39 +20,13 @@
   (addLetter)="onAddLetter($event)"
 ></app-letters-game-selected-letters>
 
-<div class="cmp-controls">
-  <div class="cmp-cv-buttons" *ngIf="state === 'game-setup'">
-    <button type="button" (click)="chooseVowel()" [disabled]="vowelCount > 5">
-      Vowel
-    </button>
-    <button
-      type="button"
-      (click)="chooseConsonant()"
-      [disabled]="consonantCount > 5"
-    >
-      Consonant
-    </button>
-  </div>
-  <div
-    class="cmp-cv-buttons"
-    *ngIf="state !== 'game-setup' && state !== 'game-ended'"
-  >
-    <button
-      type="button"
-      [disabled]="state !== 'game-in-progress'"
-      (click)="clearWord()"
-    >
-      Clear Word
-    </button>
-    <button type="button" (click)="resetGame()" *ngIf="roundDuration === 0">
-      New Game
-    </button>
-    <a href="/" class="cmp-link-as-button" *ngIf="roundDuration === 0">
-      Main Menu
-    </a>
-  </div>
-  <div class="cmp-cv-buttons" *ngIf="state === 'game-ended'">
-    <button type="button" (click)="resetGame()">New Game</button>
-    <a href="/" class="cmp-link-as-button"> Main Menu </a>
-  </div>
-</div>
+<app-letters-game-menu
+  [state]="state"
+  [consonantCount]="consonantCount"
+  [vowelCount]="vowelCount"
+  [roundDuration]="roundDuration"
+  (chooseConsonant)="onChooseConsonant()"
+  (chooseVowel)="onChooseVowel()"
+  (clearWord)="onClearWord()"
+  (resetGame)="onResetGame()"
+></app-letters-game-menu>

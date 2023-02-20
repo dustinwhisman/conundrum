@@ -1,0 +1,35 @@
+<div class="cmp-menu" *ngIf="state === 'game-setup'">
+  <button
+    type="button"
+    (click)="chooseVowel.emit()"
+    [disabled]="vowelCount > 5"
+  >
+    Vowel
+  </button>
+  <button
+    type="button"
+    (click)="chooseConsonant.emit()"
+    [disabled]="consonantCount > 5"
+  >
+    Consonant
+  </button>
+</div>
+<div class="cmp-menu" *ngIf="state !== 'game-setup' && state !== 'game-ended'">
+  <button
+    type="button"
+    [disabled]="state !== 'game-in-progress'"
+    (click)="clearWord.emit()"
+  >
+    Clear Word
+  </button>
+  <button type="button" (click)="resetGame.emit()" *ngIf="roundDuration === 0">
+    New Game
+  </button>
+  <a href="/" class="cmp-link-as-button" *ngIf="roundDuration === 0">
+    Main Menu
+  </a>
+</div>
+<div class="cmp-menu" *ngIf="state === 'game-ended'">
+  <button type="button" (click)="resetGame.emit()">New Game</button>
+  <a href="/" class="cmp-link-as-button"> Main Menu </a>
+</div>

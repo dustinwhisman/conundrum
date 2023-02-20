@@ -9,18 +9,3 @@
 h1 {
   text-align: center;
 }
-
-.cmp-cv-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--size-s0);
-  justify-content: center;
-}
-
-.cmp-cv-buttons__placeholder {
-  height: var(--size-s5);
-}
-
-.cmp-cv-buttons button {
-  font-size: var(--size-s1);
-}

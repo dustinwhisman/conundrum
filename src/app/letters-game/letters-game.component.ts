@@ -38,7 +38,7 @@ export class LettersGameComponent {
     this.letterPositioning = letterPositioning;
   }
 
-  chooseVowel() {
+  onChooseVowel() {
     if (this.state !== 'game-setup' || this.vowelCount > 5) {
       return;
     }
@@ -55,7 +55,7 @@ export class LettersGameComponent {
     }
   }
 
-  chooseConsonant() {
+  onChooseConsonant() {
     if (this.state !== 'game-setup' || this.consonantCount > 5) {
       return;
     }
@@ -95,7 +95,7 @@ export class LettersGameComponent {
     this.checkWordValidity();
   }
 
-  clearWord() {
+  onClearWord() {
     this.letters.forEach((letter) => {
       letter.isInUse = false;
     });
@@ -133,7 +133,7 @@ export class LettersGameComponent {
     checkTime();
   }
 
-  resetGame() {
+  onResetGame() {
     this.state = 'game-setup';
     this.letters = [];
     this.word = [];

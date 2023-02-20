@@ -1,0 +1,10 @@
+.cmp-menu {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--size-s0);
+  justify-content: center;
+}
+
+.cmp-menu button {
+  font-size: var(--size-s1);
+}
