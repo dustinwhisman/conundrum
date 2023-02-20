@@ -1,20 +1,7 @@
 import { Component } from '@angular/core';
-import type { BigNumber, SmallNumber, GameState } from '../numbers';
+import type { ResultOf, Number, GameState } from '../numbers';
 import { NumbersService } from '../numbers.service';
 import { SettingsService } from '../settings.service';
-
-type ResultOf = {
-  firstNumber: number;
-  secondNumber: number;
-  operation: 'multiplication' | 'division' | 'addition' | 'subtraction';
-};
-
-type Number = {
-  isInUse: boolean;
-  isSelected: boolean;
-  number: number;
-  resultOf: ResultOf | null;
-};
 
 @Component({
   selector: 'app-numbers-game',

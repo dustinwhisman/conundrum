@@ -1,0 +1,8 @@
+<button
+  type="button"
+  *ngFor="let number of combinedNumbers"
+  (click)="selectNumber.emit(number)"
+  [disabled]="state !== 'game-in-progress' || number.isInUse"
+>
+  {{ number.number }}
+</button>

@@ -8,18 +8,11 @@
 
 <app-numbers-game-target [targetValue]="targetValue"></app-numbers-game-target>
 
-<div class="cmp-combined-numbers">
-  <div class="cmp-button-list">
-    <button
-      type="button"
-      *ngFor="let number of combinedNumbers"
-      (click)="handleNumberClick(number)"
-      [disabled]="state !== 'game-in-progress' || number.isInUse"
-    >
-      {{ number.number }}
-    </button>
-  </div>
-</div>
+<app-numbers-game-combined-numbers
+  [state]="state"
+  [combinedNumbers]="combinedNumbers"
+  (selectNumber)="handleNumberClick($event)"
+></app-numbers-game-combined-numbers>
 
 <div class="cmp-operators">
   <div class="cmp-button-list">
