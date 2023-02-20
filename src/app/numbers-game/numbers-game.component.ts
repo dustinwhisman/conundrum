@@ -33,12 +33,18 @@ export class NumbersGameComponent {
     }
   }
 
-  chooseSpread(bigCount: number, smallCount: number) {
+  onChooseSpread({
+    bigNumbers,
+    smallNumbers,
+  }: {
+    bigNumbers: number;
+    smallNumbers: number;
+  }) {
     if (this.state !== 'game-setup') {
       return;
     }
 
-    for (let i = 0; i < bigCount; i += 1) {
+    for (let i = 0; i < bigNumbers; i += 1) {
       this.startingNumbers.push({
         isInUse: false,
         isSelected: false,
@@ -47,7 +53,7 @@ export class NumbersGameComponent {
       });
     }
 
-    for (let i = 0; i < smallCount; i += 1) {
+    for (let i = 0; i < smallNumbers; i += 1) {
       this.startingNumbers.push({
         isInUse: false,
         isSelected: false,
@@ -210,7 +216,7 @@ export class NumbersGameComponent {
     number.isInUse = !number.isInUse;
   }
 
-  clearWork() {
+  onClearWork() {
     this.combinedNumbers = [];
     this.selectedNumber = null;
     this.operator = null;
@@ -220,7 +226,7 @@ export class NumbersGameComponent {
     });
   }
 
-  resetGame() {
+  onResetGame() {
     this.state = 'game-setup';
     this.startingNumbers = [];
     this.combinedNumbers = [];

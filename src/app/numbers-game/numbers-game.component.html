@@ -26,28 +26,10 @@
   (selectNumber)="handleNumberClick($event)"
 ></app-numbers-game-starting-numbers>
 
-<div class="cmp-menu">
-  <div class="cmp-button-list" *ngIf="state === 'game-setup'">
-    <button type="button" (click)="chooseSpread(0, 6)">0 Big, 6 Small</button>
-    <button type="button" (click)="chooseSpread(1, 5)">1 Big, 5 Small</button>
-    <button type="button" (click)="chooseSpread(2, 4)">2 Big, 4 Small</button>
-    <button type="button" (click)="chooseSpread(3, 3)">3 Big, 3 Small</button>
-    <button type="button" (click)="chooseSpread(4, 2)">4 Big, 2 Small</button>
-  </div>
-  <div
-    class="cmp-button-list"
-    *ngIf="state !== 'game-setup' && state !== 'game-ended'"
-  >
-    <button type="button" (click)="clearWork()">Clear Work</button>
-    <button type="button" *ngIf="roundDuration === 0" (click)="resetGame()">
-      New Game
-    </button>
-    <a href="/" class="cmp-link-as-button" *ngIf="roundDuration === 0">
-      Main Menu
-    </a>
-  </div>
-  <div class="cmp-button-list" *ngIf="state === 'game-ended'">
-    <button type="button" (click)="resetGame()">New Game</button>
-    <a href="/" class="cmp-link-as-button"> Main Menu </a>
-  </div>
-</div>
+<app-numbers-game-menu
+  [state]="state"
+  [roundDuration]="roundDuration"
+  (chooseSpread)="onChooseSpread($event)"
+  (clearWork)="onClearWork()"
+  (resetGame)="onResetGame()"
+></app-numbers-game-menu>

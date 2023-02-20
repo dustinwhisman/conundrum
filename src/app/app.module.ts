@@ -19,6 +19,7 @@ import { NumbersGameTargetComponent } from './numbers-game-target/numbers-game-t
 import { NumbersGameCombinedNumbersComponent } from './numbers-game-combined-numbers/numbers-game-combined-numbers.component';
 import { NumbersGameOperatorsComponent } from './numbers-game-operators/numbers-game-operators.component';
 import { NumbersGameStartingNumbersComponent } from './numbers-game-starting-numbers/numbers-game-starting-numbers.component';
+import { NumbersGameMenuComponent } from './numbers-game-menu/numbers-game-menu.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { NumbersGameStartingNumbersComponent } from './numbers-game-starting-num
     NumbersGameCombinedNumbersComponent,
     NumbersGameOperatorsComponent,
     NumbersGameStartingNumbersComponent,
+    NumbersGameMenuComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
   providers: [],
