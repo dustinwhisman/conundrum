@@ -12,6 +12,7 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { RadioGroupComponent } from './radio-group/radio-group.component';
 import { LettersGameInstructionsComponent } from './letters-game-instructions/letters-game-instructions.component';
 import { LettersGameBoardComponent } from './letters-game-board/letters-game-board.component';
+import { LettersGameSelectedLettersComponent } from './letters-game-selected-letters/letters-game-selected-letters.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { LettersGameBoardComponent } from './letters-game-board/letters-game-boa
     RadioGroupComponent,
     LettersGameInstructionsComponent,
     LettersGameBoardComponent,
+    LettersGameSelectedLettersComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
   providers: [],

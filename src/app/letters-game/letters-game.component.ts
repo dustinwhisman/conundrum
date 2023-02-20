@@ -1,13 +1,9 @@
 import { Component } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import type { Consonant, Vowel, GameState } from '../letters';
+import type { Consonant, Vowel, Letter, GameState } from '../letters';
 import { LettersService } from '../letters.service';
+import { Settings } from '../settings';
 import { SettingsService } from '../settings.service';
-
-type Letter = {
-  isInUse: boolean;
-  letter: Consonant | Vowel;
-};
 
 @Component({
   selector: 'app-letters-game',
@@ -23,7 +19,7 @@ export class LettersGameComponent {
   endTime = Date.now();
   timeRemaining = 3;
   roundDuration = 30;
-  letterPositioning = 'linear';
+  letterPositioning: Settings['letterPositioning'] = 'linear';
   longestWord = '';
   lettersPlaceholder = new Array(9);
 
@@ -76,7 +72,7 @@ export class LettersGameComponent {
     }
   }
 
-  addLetter(letter: Letter) {
+  onAddLetter(letter: Letter) {
     letter.isInUse = true;
     this.word.push(letter.letter);
     this.checkWordValidity();

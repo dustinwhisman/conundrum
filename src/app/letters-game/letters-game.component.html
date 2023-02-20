@@ -13,28 +13,12 @@
   (removeLetter)="onRemoveLetter($event)"
 ></app-letters-game-board>
 
-<div class="cmp-letters">
-  <ul
-    class="cmp-selected-letters"
-    [ngClass]="
-      letterPositioning === 'radial' ? 'cmp-selected-letters--radial' : ''
-    "
-  >
-    <li *ngFor="let l of lettersPlaceholder; let i = index">
-      <button
-        type="button"
-        *ngIf="letters[i]"
-        [disabled]="letters[i].isInUse || state !== 'game-in-progress'"
-        (click)="addLetter(letters[i])"
-      >
-        {{ letters[i].letter }}
-      </button>
-      <button type="button" *ngIf="!letters[i]" disabled aria-hidden="true">
-        ?
-      </button>
-    </li>
-  </ul>
-</div>
+<app-letters-game-selected-letters
+  [letterPositioning]="letterPositioning"
+  [state]="state"
+  [letters]="letters"
+  (addLetter)="onAddLetter($event)"
+></app-letters-game-selected-letters>
 
 <div class="cmp-controls">
   <div class="cmp-cv-buttons" *ngIf="state === 'game-setup'">
