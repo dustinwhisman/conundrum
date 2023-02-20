@@ -8,12 +8,12 @@ describe('LettersGameBoardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LettersGameBoardComponent ]
-    })
-    .compileComponents();
+      declarations: [LettersGameBoardComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(LettersGameBoardComponent);
     component = fixture.componentInstance;
+    component.word = [];
     fixture.detectChanges();
   });
 
