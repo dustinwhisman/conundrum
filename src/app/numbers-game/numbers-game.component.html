@@ -6,12 +6,7 @@
   [timeRemaining]="timeRemaining"
 ></app-numbers-game-instructions>
 
-<div *ngIf="targetValue === 0"></div>
-
-<div class="cmp-target" *ngIf="targetValue > 0">
-  <p>The target is:</p>
-  <p class="cmp-target-number">{{ targetValue }}</p>
-</div>
+<app-numbers-game-target [targetValue]="targetValue"></app-numbers-game-target>
 
 <div class="cmp-combined-numbers">
   <div class="cmp-button-list">

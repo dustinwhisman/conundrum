@@ -14,17 +14,6 @@
   justify-content: center;
 }
 
-.cmp-target {
-  text-align: center;
-}
-
-.cmp-target-number {
-  font-family: var(--mono);
-  font-size: var(--size-s5);
-  text-align: center;
-  text-transform: uppercase;
-}
-
 .cmp-menu button {
   font-size: var(--size-s1);
 }
