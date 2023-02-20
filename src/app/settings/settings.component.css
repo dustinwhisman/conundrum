@@ -1,6 +1,7 @@
 :host {
   display: block;
-  padding-block: var(--size-s2);
+  padding: var(--size-s2);
+  padding-inline-start: var(--size-s5);
 }
 
 form {

@@ -8,8 +8,8 @@
 .cmp-selected-letters--radial {
   display: block;
   position: relative;
-  width: 18rem;
-  height: 18rem;
+  width: 15rem;
+  height: 15rem;
   margin-inline: auto;
 }
 
