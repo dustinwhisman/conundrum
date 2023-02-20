@@ -18,6 +18,7 @@ import { NumbersGameInstructionsComponent } from './numbers-game-instructions/nu
 import { NumbersGameTargetComponent } from './numbers-game-target/numbers-game-target.component';
 import { NumbersGameCombinedNumbersComponent } from './numbers-game-combined-numbers/numbers-game-combined-numbers.component';
 import { NumbersGameOperatorsComponent } from './numbers-game-operators/numbers-game-operators.component';
+import { NumbersGameStartingNumbersComponent } from './numbers-game-starting-numbers/numbers-game-starting-numbers.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { NumbersGameOperatorsComponent } from './numbers-game-operators/numbers-
     NumbersGameTargetComponent,
     NumbersGameCombinedNumbersComponent,
     NumbersGameOperatorsComponent,
+    NumbersGameStartingNumbersComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
   providers: [],

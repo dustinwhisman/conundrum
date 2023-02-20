@@ -20,18 +20,11 @@
   (selectOperator)="handleOperatorClick($event)"
 ></app-numbers-game-operators>
 
-<div class="cmp-numbers">
-  <div class="cmp-button-list" *ngIf="state !== 'game-setup'">
-    <button
-      type="button"
-      *ngFor="let number of startingNumbers"
-      (click)="handleNumberClick(number)"
-      [disabled]="state !== 'game-in-progress' || number.isInUse"
-    >
-      {{ number.number }}
-    </button>
-  </div>
-</div>
+<app-numbers-game-starting-numbers
+  [state]="state"
+  [startingNumbers]="startingNumbers"
+  (selectNumber)="handleNumberClick($event)"
+></app-numbers-game-starting-numbers>
 
 <div class="cmp-menu">
   <div class="cmp-button-list" *ngIf="state === 'game-setup'">
