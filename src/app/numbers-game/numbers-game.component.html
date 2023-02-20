@@ -1,29 +1,10 @@
-<div class="cmp-title">
-  <h1>Numbers Game</h1>
-</div>
+<h1>Numbers Game</h1>
 
-<div class="cmp-instructions">
-  <p *ngIf="state === 'game-setup'">
-    Choose a blend of numbers. Big numbers include 25, 50, 75, and 100. Small
-    numbers go from 1 to 10.
-  </p>
-  <p *ngIf="state === 'game-setting-target'">
-    Your numbers have been randomly selected. Setting your target number in:
-  </p>
-  <p *ngIf="state === 'game-starting-soon'">Get ready. Your time starts in:</p>
-  <p *ngIf="state === 'game-in-progress'">
-    Try to multiply, divide, add, and subtract your way to the target!
-  </p>
-  <p *ngIf="state === 'game-ended' && closestDistance !== 0">
-    Game over! The closest you got was {{ closestDistance }} away.
-  </p>
-  <p *ngIf="state === 'game-ended' && closestDistance === 0">
-    Nicely done! You managed to hit the exact target!
-  </p>
-  <p *ngIf="timeRemaining > 0 && state !== 'game-ended'" class="cmp-countdown">
-    {{ timeRemaining }}
-  </p>
-</div>
+<app-numbers-game-instructions
+  [state]="state"
+  [closestDistance]="closestDistance"
+  [timeRemaining]="timeRemaining"
+></app-numbers-game-instructions>
 
 <div *ngIf="targetValue === 0"></div>
 

@@ -14,6 +14,7 @@ import { LettersGameInstructionsComponent } from './letters-game-instructions/le
 import { LettersGameBoardComponent } from './letters-game-board/letters-game-board.component';
 import { LettersGameSelectedLettersComponent } from './letters-game-selected-letters/letters-game-selected-letters.component';
 import { LettersGameMenuComponent } from './letters-game-menu/letters-game-menu.component';
+import { NumbersGameInstructionsComponent } from './numbers-game-instructions/numbers-game-instructions.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { LettersGameMenuComponent } from './letters-game-menu/letters-game-menu.
     LettersGameBoardComponent,
     LettersGameSelectedLettersComponent,
     LettersGameMenuComponent,
+    NumbersGameInstructionsComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
   providers: [],
