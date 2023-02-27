@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Meta } from '@angular/platform-browser';
 import { environment } from 'src/environments/environment';
 import type { Consonant, Vowel, Letter, GameState } from '../letters';
 import { LettersService } from '../letters.service';
@@ -10,7 +11,7 @@ import { SettingsService } from '../settings.service';
   templateUrl: './letters-game.component.html',
   styleUrls: ['./letters-game.component.css'],
 })
-export class LettersGameComponent {
+export class LettersGameComponent implements OnInit {
   state: GameState = 'game-setup';
   letters: Array<Letter> = [];
   word: Array<Consonant | Vowel> = [];
@@ -25,7 +26,8 @@ export class LettersGameComponent {
 
   constructor(
     private lettersService: LettersService,
-    private settingsService: SettingsService
+    private settingsService: SettingsService,
+    private meta: Meta
   ) {
     const { timerDuration, letterPositioning } =
       this.settingsService.getSettings();
@@ -36,6 +38,14 @@ export class LettersGameComponent {
     }
 
     this.letterPositioning = letterPositioning;
+  }
+
+  ngOnInit(): void {
+    this.meta.addTag({
+      name: 'description',
+      content:
+        'Play the letters game! Choose a selection of 9 consonants or vowels, then see how long of a word you can form from those letters.',
+    });
   }
 
   onChooseVowel() {

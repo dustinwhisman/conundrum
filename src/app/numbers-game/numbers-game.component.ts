@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Meta } from '@angular/platform-browser';
 import type { ResultOf, Number, GameState } from '../numbers';
 import { NumbersService } from '../numbers.service';
 import { SettingsService } from '../settings.service';
@@ -8,7 +9,7 @@ import { SettingsService } from '../settings.service';
   templateUrl: './numbers-game.component.html',
   styleUrls: ['./numbers-game.component.css'],
 })
-export class NumbersGameComponent {
+export class NumbersGameComponent implements OnInit {
   state: GameState = 'game-setup';
   startingNumbers: Array<Number> = [];
   combinedNumbers: Array<Number> = [];
@@ -23,7 +24,8 @@ export class NumbersGameComponent {
 
   constructor(
     private numbersService: NumbersService,
-    private settingsService: SettingsService
+    private settingsService: SettingsService,
+    private meta: Meta
   ) {
     const { timerDuration } = this.settingsService.getSettings();
     if (timerDuration !== 'off') {
@@ -31,6 +33,14 @@ export class NumbersGameComponent {
     } else {
       this.roundDuration = 0;
     }
+  }
+
+  ngOnInit(): void {
+    this.meta.addTag({
+      name: 'description',
+      content:
+        'Play the numbers game! Choose a selection of 6 big or small numbers, then use your arithmetic skills to try to hit a randomly selected target.',
+    });
   }
 
   onChooseSpread({
