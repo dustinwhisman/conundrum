@@ -9,6 +9,9 @@
         "files": [
           "/favicon.ico",
           "/index.html",
+          "/letters-game/index.html",
+          "/numbers-game/index.html",
+          "/settings/index.html",
           "/manifest.webmanifest",
           "/*.css",
           "/*.js"
