@@ -41,7 +41,7 @@ import { NumbersGameMenuComponent } from './numbers-game-menu/numbers-game-menu.
     NumbersGameStartingNumbersComponent,
     NumbersGameMenuComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
+  imports: [BrowserModule.withServerTransition({ appId: 'serverApp' }), AppRoutingModule, ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })
