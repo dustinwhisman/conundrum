@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -20,6 +20,7 @@ import { NumbersGameCombinedNumbersComponent } from './numbers-game-combined-num
 import { NumbersGameOperatorsComponent } from './numbers-game-operators/numbers-game-operators.component';
 import { NumbersGameStartingNumbersComponent } from './numbers-game-starting-numbers/numbers-game-starting-numbers.component';
 import { NumbersGameMenuComponent } from './numbers-game-menu/numbers-game-menu.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,12 @@ import { NumbersGameMenuComponent } from './numbers-game-menu/numbers-game-menu.
     NumbersGameStartingNumbersComponent,
     NumbersGameMenuComponent,
   ],
-  imports: [BrowserModule.withServerTransition({ appId: 'serverApp' }), AppRoutingModule, ReactiveFormsModule],
+  imports: [BrowserModule.withServerTransition({ appId: 'serverApp' }), AppRoutingModule, ReactiveFormsModule, ServiceWorkerModule.register('ngsw-worker.js', {
+  enabled: !isDevMode(),
+  // Register the ServiceWorker as soon as the application is stable
+  // or after 30 seconds (whichever comes first).
+  registrationStrategy: 'registerWhenStable:30000'
+})],
   providers: [],
   bootstrap: [AppComponent],
 })
