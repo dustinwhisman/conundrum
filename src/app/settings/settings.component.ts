@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { Meta } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { RadioGroup } from '../form-controls.type';
 import { defaultSettings } from '../settings';
@@ -10,7 +11,7 @@ import { SettingsService } from '../settings.service';
   templateUrl: './settings.component.html',
   styleUrls: ['./settings.component.css'],
 })
-export class SettingsComponent {
+export class SettingsComponent implements OnInit {
   settingsForm = this.formBuilder.group(this.settingsService.getSettings());
   timerDurationControl: RadioGroup = {
     name: 'timerDuration',
@@ -48,8 +49,17 @@ export class SettingsComponent {
   constructor(
     private formBuilder: FormBuilder,
     private settingsService: SettingsService,
-    private router: Router
+    private router: Router,
+    private meta: Meta
   ) {}
+
+  ngOnInit(): void {
+    this.meta.addTag({
+      name: 'description',
+      content:
+        'Customize your experience. You can set the duration of each round or turn off timers entirely, and you can choose to arrange letters in a line or a circle.',
+    });
+  }
 
   onSubmit(): void {
     this.settingsService.setSettings({
