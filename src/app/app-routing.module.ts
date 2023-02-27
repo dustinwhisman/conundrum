@@ -6,7 +6,11 @@ import { NumbersGameComponent } from './numbers-game/numbers-game.component';
 import { SettingsComponent } from './settings/settings.component';
 
 const routes: Routes = [
-  { path: '', component: GameSelectionComponent },
+  {
+    path: '',
+    component: GameSelectionComponent,
+    title: 'Game Selection | Conundrum',
+  },
   {
     path: 'letters-game',
     component: LettersGameComponent,
@@ -25,9 +29,11 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {
-    initialNavigation: 'enabledBlocking'
-})],
+  imports: [
+    RouterModule.forRoot(routes, {
+      initialNavigation: 'enabledBlocking',
+    }),
+  ],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
