@@ -17,3 +17,7 @@ input[type="radio"] {
   width: var(--size-s0);
   height: var(--size-s0);
 }
+
+fieldset div + div {
+  margin-block-start: var(--size-s-5);
+}
