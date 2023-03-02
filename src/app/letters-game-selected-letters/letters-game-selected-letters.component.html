@@ -8,6 +8,7 @@
     <button
       type="button"
       *ngIf="letters[i]"
+      [attr.data-inactive]="state !== 'game-in-progress'"
       [disabled]="letters[i].isInUse || state !== 'game-in-progress'"
       (click)="addLetter.emit(letters[i])"
     >
