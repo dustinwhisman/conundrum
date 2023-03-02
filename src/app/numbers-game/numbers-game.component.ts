@@ -202,6 +202,10 @@ export class NumbersGameComponent implements OnInit {
       return;
     }
 
+    if (number.isSelected) {
+      return;
+    }
+
     if (this.operator == null) {
       return;
     }
