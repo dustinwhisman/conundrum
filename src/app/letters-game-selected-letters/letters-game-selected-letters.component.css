@@ -5,6 +5,12 @@
   justify-content: center;
 }
 
+@media (max-width: 26rem) {
+  .cmp-selected-letters {
+    gap: var(--size-s-5);
+  }
+}
+
 .cmp-selected-letters--radial {
   display: block;
   position: relative;
