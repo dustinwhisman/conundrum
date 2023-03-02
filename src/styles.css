@@ -257,6 +257,12 @@
     background-color: transparent;
   }
 
+  @media (max-width: 36rem) {
+    button {
+      padding: 0.25em 0.5em;
+    }
+  }
+
   button:not([disabled]):hover,
   button:not([disabled]):focus {
     background-color: var(--ink);
@@ -299,6 +305,12 @@
     padding: 0.5em 1em;
     text-align: center;
     background-color: transparent;
+  }
+
+  @media (max-width: 36rem) {
+    .cmp-link-as-button {
+      padding: 0.25em 0.5em;
+    }
   }
 
   .cmp-link-as-button:hover,
