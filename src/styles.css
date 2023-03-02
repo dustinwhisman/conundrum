@@ -271,6 +271,11 @@
   button:not([disabled]):focus:not(:focus-visible) {
     outline-color: transparent;
   }
+
+  button[data-selected="true"] {
+    background-color: var(--ink);
+    color: var(--paper);
+  }
 }
 
 @layer components {
