@@ -278,9 +278,19 @@
     outline-color: transparent;
   }
 
+  button[disabled] {
+    cursor: initial;
+  }
+
   button[data-selected="true"] {
     background-color: var(--ink);
     color: var(--paper);
+  }
+
+  button[data-inactive="true"] {
+    background-color: var(--paper);
+    color: var(--ink);
+    opacity: 75%;
   }
 }
 
