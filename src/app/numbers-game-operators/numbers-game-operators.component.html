@@ -1,6 +1,7 @@
 <button
   type="button"
   aria-label="Multiply"
+  [attr.data-selected]="operator === 'multiplication'"
   (click)="selectOperator.emit('multiplication')"
   [disabled]="state !== 'game-in-progress' || selectedNumber == null"
 >
@@ -9,6 +10,7 @@
 <button
   type="button"
   aria-label="Divide"
+  [attr.data-selected]="operator === 'division'"
   (click)="selectOperator.emit('division')"
   [disabled]="state !== 'game-in-progress' || selectedNumber == null"
 >
@@ -17,6 +19,7 @@
 <button
   type="button"
   aria-label="Add"
+  [attr.data-selected]="operator === 'addition'"
   (click)="selectOperator.emit('addition')"
   [disabled]="state !== 'game-in-progress' || selectedNumber == null"
 >
@@ -25,6 +28,7 @@
 <button
   type="button"
   aria-label="Subtract"
+  [attr.data-selected]="operator === 'subtraction'"
   (click)="selectOperator.emit('subtraction')"
   [disabled]="state !== 'game-in-progress' || selectedNumber == null"
 >

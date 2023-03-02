@@ -202,6 +202,10 @@ export class NumbersGameComponent implements OnInit {
       return;
     }
 
+    if (number.isSelected) {
+      return;
+    }
+
     if (this.operator == null) {
       return;
     }
@@ -212,6 +216,7 @@ export class NumbersGameComponent implements OnInit {
 
     this.doMath(this.selectedNumber, number, this.operator);
     this.selectedNumber = null;
+    this.operator = null;
   }
 
   handleOperatorClick(operator: ResultOf['operation']) {

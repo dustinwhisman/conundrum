@@ -2,6 +2,7 @@
   <button
     type="button"
     *ngFor="let number of startingNumbers"
+    [attr.data-selected]="number.isSelected"
     (click)="selectNumber.emit(number)"
     [disabled]="state !== 'game-in-progress' || number.isInUse"
   >

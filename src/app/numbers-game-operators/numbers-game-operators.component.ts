@@ -9,5 +9,6 @@ import { GameState, Number, ResultOf } from '../numbers';
 export class NumbersGameOperatorsComponent {
   @Input() state!: GameState;
   @Input() selectedNumber!: Number | null;
+  @Input() operator!: ResultOf['operation'] | null;
   @Output() selectOperator = new EventEmitter<ResultOf['operation']>();
 }
